@@ -1,0 +1,23 @@
+.wrapper {
+    position: relative;
+    top: 0;
+    height: 100vh;
+}
+.sidebar {
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    width: 297px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0 16px 38px -12px rgb(0 0 0 / 56%), 0 4px 25px 0px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+}
+.bg-admin-sidebar{
+    background-color: #162026;
+}
+.sidebar-border-bottom{
+    border-bottom: 1px solid #979797;
+}
+
