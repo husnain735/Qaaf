@@ -12,18 +12,10 @@ const routes: Routes = [
   {
     path: '',
     component: FullLayoutComponent,
-    data: {
-      title: "Qaaf"
-    },
     children: [
       {
         path: '',
         component: HomeComponent,
-        runGuardsAndResolvers: 'always',
-        data: {
-          title: "",
-          title_ar: ""
-        },
       },
       {
         path: 'admin',
