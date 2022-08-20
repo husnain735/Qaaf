@@ -1,16 +1,17 @@
 
 
 
-.navbar {
+.nav1-heigh {
     height: 4rem;
 }
-.navbar-nav{
-position: absolute;
-right: 5rem;
-height: auto;
+.nav-links-position{
+    margin: auto;
+
 }
-.navbar-nav li a{
+.nav-links-position li a{
     font-size: 18px;
     font-weight: 500;
+    padding-right: 1.5rem;
+    margin: auto 1rem auto 1rem;
    }
 
