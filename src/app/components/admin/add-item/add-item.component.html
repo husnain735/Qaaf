@@ -29,7 +29,7 @@
                         </div>
                         <div class="form-group">
                             <label>Discount</label>
-                            <input type="char" name="Discount" class="form-control" [(ngModel)]="model.Discount" #Discount="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Discount.invalid }" 
+                            <input type="char" name="Discount" class="form-control" [(ngModel)]="model.DiscountedPrice" #Discount="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Discount.invalid }" 
                             onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 
                             && event.charCode <= 57"
                             required>
@@ -55,8 +55,27 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>Color Code</label>
+                            <div class="row mx-0">
+                                <ng-container *ngFor="let item of colorCode">
+                                    <div class="col-auto mb-2 px-1">
+                                        <button type="button" id="{{item.name}}" class="color-code" placement="top"
+                                            (click)="checkedColorCode(item.code)"
+                                            [ngbTooltip]="item.name" 
+                                            [ngStyle]="{'background-color': item.code}">
+                                            
+                                        </button>
+                                        <i *ngIf="item.isChecked == true" class="fa fa-check checked" aria-hidden="true"></i>
+                                    </div>
+                                </ng-container>
+                            </div>
+                            <div *ngIf="!isColored" class="error">
+                                Select color code
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label>Description</label>
-                            <textarea class="form-control" cols="30" rows="5" maxlength="4000" type="text" id="Description" name="Description" [(ngModel)]="model.Description" #Description="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Quantity.invalid }"  required></textarea>
+                            <textarea class="form-control" cols="30" rows="5" maxlength="4000" type="text" id="Description" name="Description" [(ngModel)]="model.ItemDescription" #Description="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Quantity.invalid }"  required></textarea>
                             <div *ngIf="f.submitted && Description.invalid" class="invalid-feedback">
                                 <div *ngIf="Description.errors.required">Description is required</div>
                             </div>
@@ -69,7 +88,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button class="btn btn-primary mr-1">Register</button>
+                            <button class="btn btn-primary mr-1" (click)="checkCode()">Register</button>
                         </div>
                     </form>
                 </div>

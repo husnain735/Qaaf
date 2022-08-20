@@ -9,6 +9,7 @@ import { ManageItemsComponent } from './manage-items/manage-items.component';
 import { ManageOrdersComponent } from './manage-orders/manage-orders.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -23,7 +24,9 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule
+ 
   ]
 })
 export class AdminModule { }

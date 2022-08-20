@@ -19,7 +19,6 @@ import { HomeComponent } from './components/home/home.component';
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
     FormsModule,
     SharedModule
   ],
