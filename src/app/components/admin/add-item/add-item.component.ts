@@ -12,6 +12,9 @@ export class AddItemComponent implements OnInit {
   model: Item;
   colorCode = [];
   isColored: boolean = true;
+  isNumberOfPiece: boolean = true;
+  isGender: boolean = true;
+  isStitched: boolean = true;
   ngOnInit(): void {
     this.colorCode = [
     {
@@ -170,6 +173,25 @@ export class AddItemComponent implements OnInit {
     }else{
       this.isColored = false;
     }
+
+    if (this.model.GenderTypeId == undefined) {
+      this.isGender = false;
+    }else{
+      this.isGender = true;
+    }
+
+    if (this.model.NumberOfPiece == undefined) {
+      this.isNumberOfPiece = false;
+    }else{
+      this.isNumberOfPiece = true;
+    }
+
+    if (this.model.StitchTypeId == undefined) {
+      this.isStitched = false;
+    }else{
+      this.isStitched = true;
+    }
+
   }
   onSubmit() {
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model, null, 4));

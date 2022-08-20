@@ -1,57 +1,129 @@
-<div class="container py-5 my-3">
+<div class="container-fluid py-5 my-3">
     <div class="row mx-0">
         <div class="col-12">
             <div class="d-flex justify-content-between bg-gray p-2">
                 <div class="align-self-center font-18 font-w-500">
-                   Add Item
+                    Add Item
                 </div>
             </div>
             <div class="row mx-0 rr mt-4 justify-content-center">
                 <div class="col-sm-12 col-md-12 col-lg-8 mb-4">
-                
+
                     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
                         <div class="form-group">
                             <label>Title</label>
-                            <input type="text" name="Title" class="form-control" [(ngModel)]="model.Title" #Title="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Title.invalid }" required>
+                            <input type="text" name="Title" class="form-control" [(ngModel)]="model.Title"
+                                #Title="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Title.invalid }" required>
                             <div *ngIf="f.submitted && Title.invalid" class="invalid-feedback">
                                 <div *ngIf="Title.errors.required">Title is required</div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Price</label>
-                            <input type="char" name="Price" class="form-control" [(ngModel)]="model.Price" #Price="ngModel" 
-                            [ngClass]="{ 'is-invalid': f.submitted && Price.invalid }" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 
-                            && event.charCode <= 57"
-                             required>
+                            <input type="char" name="Price" class="form-control" [(ngModel)]="model.Price"
+                                #Price="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Price.invalid }" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 
+                            && event.charCode <= 57" required>
                             <div *ngIf="f.submitted && Price.invalid" class="invalid-feedback">
                                 <div *ngIf="Price.errors.required">Price is required</div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Discount</label>
-                            <input type="char" name="Discount" class="form-control" [(ngModel)]="model.DiscountedPrice" #Discount="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Discount.invalid }" 
-                            onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 
-                            && event.charCode <= 57"
-                            required>
+                            <input type="char" name="Discount" class="form-control" [(ngModel)]="model.DiscountedPrice"
+                                #Discount="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Discount.invalid }"
+                                onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 
+                            && event.charCode <= 57" required>
                             <div *ngIf="f.submitted && Discount.invalid" class="invalid-feedback">
                                 <div *ngIf="Discount.errors.required">Discount is required</div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Product Code</label>
-                            <input type="text" name="ProductCode" class="form-control" [(ngModel)]="model.ProductCode" #ProductCode="ngModel" [ngClass]="{ 'is-invalid': f.submitted && ProductCode.invalid }" required>
+                            <input type="text" name="ProductCode" class="form-control" [(ngModel)]="model.ProductCode"
+                                #ProductCode="ngModel" [ngClass]="{ 'is-invalid': f.submitted && ProductCode.invalid }"
+                                required>
                             <div *ngIf="f.submitted && ProductCode.invalid" class="invalid-feedback">
                                 <div *ngIf="ProductCode.errors.required">Product Code is required</div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Quantity</label>
-                            <input type="char" name="Quantity" class="form-control" [(ngModel)]="model.Quantity" #Quantity="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Quantity.invalid }" 
-                            onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 
-                            && event.charCode <= 57"
-                            required>
+                            <input type="char" name="Quantity" class="form-control" [(ngModel)]="model.Quantity"
+                                #Quantity="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Quantity.invalid }"
+                                onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 
+                            && event.charCode <= 57" required>
                             <div *ngIf="f.submitted && Quantity.invalid" class="invalid-feedback">
                                 <div *ngIf="Quantity.errors.required">Quantity is required</div>
+                            </div>
+                        </div>
+                        <div class="row mx-0 my-5">
+                            <label class="font-22 mb-3">Gender</label>
+                            <div class="form-check col-6">
+                                <input class="form-check-input cursor" type="radio" (change)="model.GenderTypeId = 4;isGender = true"
+                                    [checked]="model.GenderTypeId == 4" name="exampleRadios" id="Women" value="4"
+                                    checked>
+                                <label class="form-check-label cursor" for="Women">
+                                    Women
+                                </label>
+                            </div>
+                            <div class="form-check col-6">
+                                <input class="form-check-input cursor" type="radio" (change)="model.GenderTypeId = 5;isGender = true"
+                                    [checked]="model.GenderTypeId == 5" name="exampleRadios" id="Girls" value="5">
+                                <label class="form-check-label cursor" for="Girls">
+                                    Girls
+                                </label>
+                            </div>
+                            <div *ngIf="isGender == false" class="error">
+                                Select atleast one gender
+                            </div>
+                        </div>
+                        <div class="row mx-0 my-5">
+                            <label class="font-22 mb-3">Stitch or UnStitch</label>
+                            <div class="form-check col-6">
+                                <input class="form-check-input cursor" type="radio" (change)="model.StitchTypeId = 6;isStitched = true"
+                                    [checked]="model.StitchTypeId == 6" name="exampleRadios1" id="Stitch" value="6"
+                                    checked>
+                                <label class="form-check-label cursor" for="Stitch">
+                                    Stitch
+                                </label>
+                            </div>
+                            <div class="form-check col-6">
+                                <input class="form-check-input cursor" type="radio" (change)="model.StitchTypeId = 7;isStitched = true"
+                                    [checked]="model.StitchTypeId == 7" name="exampleRadios1" id="UnStitch" value="7">
+                                <label class="form-check-label cursor" for="UnStitch">
+                                    UnStitch
+                                </label>
+                            </div>
+                            <div *ngIf="isStitched == false" class="error">
+                                Select atleast one type
+                            </div>
+                        </div>
+                        <div class="row mx-0 my-5">
+                            <label class="font-22 mb-3">Piece</label>
+                            <div class="form-check col-4">
+                                <input class="form-check-input cursor" type="radio" (change)="model.NumberOfPiece = 8;isNumberOfPiece = true"
+                                    [checked]="model.NumberOfPiece == 8" name="exampleRadios2" id="2Piece" value="8"
+                                    checked>
+                                <label class="form-check-label cursor" for="2Piece">
+                                    2 Piece
+                                </label>
+                            </div>
+                            <div class="form-check col-4">
+                                <input class="form-check-input cursor" type="radio" (change)="model.NumberOfPiece = 9;isNumberOfPiece = true"
+                                    [checked]="model.NumberOfPiece == 9" name="exampleRadios2" id="3Piece" value="9">
+                                <label class="form-check-label cursor" for="3Piece">
+                                    3 Piece
+                                </label>
+                            </div>
+                            <div class="form-check col-4">
+                                <input class="form-check-input cursor" type="radio" (change)="model.NumberOfPiece = 10;isNumberOfPiece = true"
+                                    [checked]="model.NumberOfPiece == 10" name="exampleRadios2" id="4Piece" value="10">
+                                <label class="form-check-label cursor" for="4Piece">
+                                    4 Piece
+                                </label>
+                            </div>
+                            <div *ngIf="isNumberOfPiece == false" class="error">
+                                Select atleast one number of piece
                             </div>
                         </div>
                         <div class="form-group">
@@ -60,12 +132,12 @@
                                 <ng-container *ngFor="let item of colorCode">
                                     <div class="col-auto mb-2 px-1">
                                         <button type="button" id="{{item.name}}" class="color-code" placement="top"
-                                            (click)="checkedColorCode(item.code)"
-                                            [ngbTooltip]="item.name" 
+                                            (click)="checkedColorCode(item.code)" [ngbTooltip]="item.name"
                                             [ngStyle]="{'background-color': item.code}">
-                                            
+
                                         </button>
-                                        <i *ngIf="item.isChecked == true" class="fa fa-check checked" aria-hidden="true"></i>
+                                        <i *ngIf="item.isChecked == true" class="fa fa-check checked"
+                                            aria-hidden="true"></i>
                                     </div>
                                 </ng-container>
                             </div>
@@ -75,14 +147,19 @@
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea class="form-control" cols="30" rows="5" maxlength="4000" type="text" id="Description" name="Description" [(ngModel)]="model.ItemDescription" #Description="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Quantity.invalid }"  required></textarea>
+                            <textarea class="form-control" cols="30" rows="5" type="text"
+                                id="Description" name="Description" [(ngModel)]="model.ItemDescription"
+                                #Description="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Quantity.invalid }"
+                                required></textarea>
                             <div *ngIf="f.submitted && Description.invalid" class="invalid-feedback">
                                 <div *ngIf="Description.errors.required">Description is required</div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Disclaimer</label>
-                            <textarea class="form-control" maxlength="2000" type="text" id="Disclaimer" name="Disclaimer" [(ngModel)]="model.Disclaimer" #Disclaimer="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Quantity.invalid }"  required></textarea>
+                            <textarea class="form-control" type="text" id="Disclaimer"
+                                name="Disclaimer" [(ngModel)]="model.Disclaimer" #Disclaimer="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted && Quantity.invalid }" required></textarea>
                             <div *ngIf="f.submitted && Disclaimer.invalid" class="invalid-feedback">
                                 <div *ngIf="Disclaimer.errors.required">Disclaimer is required</div>
                             </div>
