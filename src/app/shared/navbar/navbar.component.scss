@@ -185,6 +185,15 @@
         border-top-left-radius: unset;
         border-top-right-radius: unset;
     }
+    .text-mb-white.text-white{
+        color: black !important;
+    }
+    .primary-bg-mb-color.primary-bg-color{
+        background-color: transparent !important;
+    }
+    .text-mb-center{
+        text-align: center;
+    }
   }
   @media only screen and (max-width: 768px){
     ul {
