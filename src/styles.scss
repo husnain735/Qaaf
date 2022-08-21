@@ -110,3 +110,25 @@
 .error{
     color: #dc3545;
 }
+.right-lan .rr {
+    flex-direction: row-reverse;
+
+}
+.right-lan .rtl-rr{
+    direction: rtl;
+}
+
+.direction-rtl{
+    direction: rtl;
+}
+
+.direction-ltr{
+    direction: ltr;
+}
+button:focus {
+    outline:  0px !important;
+    outline: -webkit-focus-ring-color auto 0px !important;
+}
+.list-group-horizontal {
+    flex-direction: row;
+}

@@ -1,9 +1,8 @@
 <nav class="navbar nav1-heigh navbar-expand-lg navbar-light bg-light">
-    <div class="navbar navbar-expand ml-auto pr-4">Delivery within a Week</div>
+  <div class="navbar navbar-expand ml-auto pr-4">Delivery within a Week</div>
 </nav>
 
-
-
+<!-- 
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -33,4 +32,273 @@
           </li>
       </ul>
     </div>
-  </nav>
+  </nav> -->
+
+<nav
+  id="web-header-2"
+  class="z-index-2 pt-lg-2 shadow navbar navbar-position navbar-expand-xl navbar-light zindex-fixed card-shadow"
+  [ngClass]="_sharedService.language == 'en' ? 'right-lan' : 'left-lan'"
+>
+  <div class="row mx-0 rr w-100">
+    <div class="col-auto my-auto d-lg-none">
+      <button
+        id="open"
+        class="navbar-toggler navbar-toggler-right collapsed"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span> </span>
+        <span> </span>
+        <span> </span>
+      </button>
+    </div>
+
+    <div
+      class="col-xl-auto col-md my-md-3 mx-auto collapse navbar-collapse mt-5 w-auto-2 rtl-rr dp-height"
+      id="navbarSupportedContent"
+    >
+      <ul
+        class="list-group list-group-horizontal navbar-nav list-group-flush"
+        [ngClass]="
+          _sharedService.language == 'en' ? 'direction-ltr' : 'direction-rtl'
+        "
+      >
+        <li
+          [ngClass]="{
+            active1: tab === 'tab1',
+            'mx-lg-3 mr-auto': _sharedService.language == 'en',
+            ' mx-lg-3 ml-auto': _sharedService.language == 'ar'
+          }"
+          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0"
+          aria-expanded="true"
+          (click)="onClick(1)"
+          data-target="#navbarSupportedContent"
+        >
+          <div class="d-lg-none d-block row w-100 mx-0 dp-li">
+            <li
+              class="nav-item row rr dp-li"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="true"
+              aria-label="Toggle navigation"
+            ></li>
+          </div>
+          <p
+            id="aboutUs1"
+            [ngClass]="
+              _sharedService.language == 'en'
+                ? 'font-family-en font-14 font-weight-heavy'
+                : 'font-family-ar font-18 font-weight-heavy'
+            "
+            class="cursor nav-link mb-0 black text-center text-lg-end height-md px-0 pt-0 m-0"
+          >
+            Home
+          </p>
+        </li>
+        <li
+          [ngClass]="{
+            active1: tab === 'tab1',
+            'mx-lg-3 mr-auto': _sharedService.language == 'en',
+            ' mx-lg-3 ml-auto': _sharedService.language == 'ar'
+          }"
+          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0"
+          aria-expanded="true"
+          (click)="onClick(1)"
+          data-target="#navbarSupportedContent"
+        >
+          <div class="d-lg-none d-block row w-100 mx-0 dp-li">
+            <li
+              class="nav-item row rr dp-li"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="true"
+              aria-label="Toggle navigation"
+            ></li>
+          </div>
+          <p
+            id="aboutUs1"
+            [ngClass]="
+              _sharedService.language == 'en'
+                ? 'font-family-en font-14 font-weight-heavy'
+                : 'font-family-ar font-18 font-weight-heavy'
+            "
+            class="cursor nav-link mb-0 black text-center text-lg-end height-md px-0 pt-0 m-0"
+          >
+            New Arrival
+          </p>
+        </li>
+        <li
+          [ngClass]="{
+            active1: tab === 'tab1',
+            'mx-lg-3 mr-auto': _sharedService.language == 'en',
+            ' mx-lg-3 ml-auto': _sharedService.language == 'ar'
+          }"
+          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0"
+          aria-expanded="true"
+          (click)="onClick(1)"
+          data-target="#navbarSupportedContent"
+        >
+          <div class="d-lg-none d-block row w-100 mx-0 dp-li">
+            <li
+              class="nav-item row rr dp-li"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="true"
+              aria-label="Toggle navigation"
+            ></li>
+          </div>
+          <p
+            id="aboutUs1"
+            [ngClass]="
+              _sharedService.language == 'en'
+                ? 'font-family-en font-14 font-weight-heavy'
+                : 'font-family-ar font-18 font-weight-heavy'
+            "
+            class="cursor nav-link mb-0 black text-center text-lg-end height-md px-0 pt-0 m-0"
+          >
+            Sale
+          </p>
+        </li>
+        <li
+          [ngClass]="{
+            active1: tab === 'tab1',
+            'mx-lg-3 mr-auto': _sharedService.language == 'en',
+            ' mx-lg-3 ml-auto': _sharedService.language == 'ar'
+          }"
+          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0"
+          aria-expanded="true"
+          (click)="onClick(1)"
+          data-target="#navbarSupportedContent"
+        >
+          <div class="d-lg-none d-block row w-100 mx-0 dp-li">
+            <li
+              class="nav-item row rr dp-li"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="true"
+              aria-label="Toggle navigation"
+            ></li>
+          </div>
+          <p
+            id="aboutUs1"
+            [ngClass]="
+              _sharedService.language == 'en'
+                ? 'font-family-en font-14 font-weight-heavy'
+                : 'font-family-ar font-18 font-weight-heavy'
+            "
+            class="cursor nav-link mb-0 black text-center text-lg-end height-md px-0 pt-0 m-0"
+          >
+            Womens
+          </p>
+        </li>
+        <li
+          [ngClass]="{
+            active1: tab === 'tab1',
+            'mx-lg-3 mr-auto': _sharedService.language == 'en',
+            ' mx-lg-3 ml-auto': _sharedService.language == 'ar'
+          }"
+          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0"
+          aria-expanded="true"
+          (click)="onClick(1)"
+          data-target="#navbarSupportedContent"
+        >
+          <div class="d-lg-none d-block row w-100 mx-0 dp-li">
+            <li
+              class="nav-item row rr dp-li"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="true"
+              aria-label="Toggle navigation"
+            ></li>
+          </div>
+          <p
+            id="aboutUs1"
+            [ngClass]="
+              _sharedService.language == 'en'
+                ? 'font-family-en font-14 font-weight-heavy'
+                : 'font-family-ar font-18 font-weight-heavy'
+            "
+            class="cursor nav-link mb-0 black text-center text-lg-end height-md px-0 pt-0 m-0"
+          >
+            Girls
+          </p>
+        </li>
+        <li
+          [ngClass]="{
+            active1: tab === 'tab1',
+            'mx-lg-3 mr-auto': _sharedService.language == 'en',
+            ' mx-lg-3 ml-auto': _sharedService.language == 'ar'
+          }"
+          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0"
+          aria-expanded="true"
+          (click)="onClick(1)"
+          data-target="#navbarSupportedContent"
+        >
+          <div class="d-lg-none d-block row w-100 mx-0 dp-li">
+            <li
+              class="nav-item row rr dp-li"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="true"
+              aria-label="Toggle navigation"
+            ></li>
+          </div>
+          <p
+            id="aboutUs1"
+            [ngClass]="
+              _sharedService.language == 'en'
+                ? 'font-family-en font-14 font-weight-heavy'
+                : 'font-family-ar font-18 font-weight-heavy'
+            "
+            class="cursor nav-link mb-0 black text-center text-lg-end height-md px-0 pt-0 m-0"
+          >
+            stitched
+          </p>
+        </li>
+        <li
+          [ngClass]="{
+            active1: tab === 'tab1',
+            'mx-lg-3 mr-auto': _sharedService.language == 'en',
+            ' mx-lg-3 ml-auto': _sharedService.language == 'ar'
+          }"
+          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0"
+          aria-expanded="true"
+          (click)="onClick(1)"
+          data-target="#navbarSupportedContent"
+        >
+          <div class="d-lg-none d-block row w-100 mx-0 dp-li">
+            <li
+              class="nav-item row rr dp-li"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="true"
+              aria-label="Toggle navigation"
+            ></li>
+          </div>
+          <p
+            id="aboutUs1"
+            [ngClass]="
+              _sharedService.language == 'en'
+                ? 'font-family-en font-14 font-weight-heavy'
+                : 'font-family-ar font-18 font-weight-heavy'
+            "
+            class="cursor nav-link mb-0 black text-center text-lg-end height-md px-0 pt-0 m-0"
+          >
+            Unstitched
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
