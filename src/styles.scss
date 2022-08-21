@@ -2,6 +2,8 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+$primary_font_en: "Uni Neue";
 .cursor {
     cursor: pointer !important;
 }
@@ -131,4 +133,7 @@ button:focus {
 }
 .list-group-horizontal {
     flex-direction: row;
+}
+.font-family-en{
+    font-family: $primary_font_en;
 }
