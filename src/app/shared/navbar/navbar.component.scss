@@ -108,6 +108,25 @@
     max-width: 500px;
     z-index: 99999;
 }
+.logo-img-size{
+    width: 171px;
+    height: 64px;
+}
+.ts.logo::after {
+    background-image: url("../../../assets/images/svg/QAAF-Logo.svg");
+    transform: scale(5.5)translate(9px, 6px);
+}
+.nav-border{
+    border: 1px solid #244870;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+.socialMedia-icon{
+    height: 30px;
+    width: 30px;
+}
 @media only screen and (min-width: 601px) {
     .w-auto-2 {
       width: auto !important;
@@ -154,6 +173,17 @@
     }
     .top-Header{
       top: 0px !important;
+    }
+    .ts.logo::after {
+        background-image: url("../../../assets/images/svg/QAAF-Logo.svg");
+        transform: scale(5.5) translate(7px, 2px);
+    }
+    .nav-border{
+        border: unset;
+        border-bottom-left-radius: unset;
+        border-bottom-right-radius: unset;
+        border-top-left-radius: unset;
+        border-top-right-radius: unset;
     }
   }
   @media only screen and (max-width: 768px){

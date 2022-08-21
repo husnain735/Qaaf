@@ -1,39 +1,16 @@
-<nav class="navbar nav1-heigh navbar-expand-lg navbar-light bg-light">
-  <div class="navbar navbar-expand ml-auto pr-4">Delivery within a Week</div>
-</nav>
-
-<!-- 
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav nav-links-position">
-        <li class="nav-item active">
-          <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#new-arrival">New Arrival</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#sale">Sale</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="#women">Women</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#girls">Girls</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#unstitched">Unstitched</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#stitched">Stitched</a>
-          </li>
-      </ul>
-    </div>
-  </nav> -->
-
+<div class="row mx-0 primary-bg-color p-4 bb-secondary">
+  <div class="col-lg-5 col-md-5 col-sm-12 col-12">
+    <p class="mb-0 text-white">Free Delivery in Pakistan on order of above PKR 5000</p>
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+    <p class="mb-0 text-white">Order delivery may take 5-10 workig days</p>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-12 col-12 text-end">
+    <img class="socialMedia-icon mr-3" src="../../../assets/images/png/instagram.png" alt="">
+    <img class="socialMedia-icon mr-3" src="../../../assets/images/png/Facebook.png" alt="">
+    <img class="socialMedia-icon mr-3" src="../../../assets/images/png/youtube.png" alt="">
+  </div>
+</div>
 <nav
   id="web-header-2"
   class="z-index-2 pt-lg-2 shadow navbar navbar-position navbar-expand-xl navbar-light zindex-fixed card-shadow"
@@ -58,11 +35,11 @@
     </div>
 
     <div
-      class="col-xl-auto col-md my-md-3 mx-auto collapse navbar-collapse mt-5 w-auto-2 rtl-rr dp-height"
+      class="col-xl-auto col-md my-md-3 mx-auto collapse navbar-collapse mt-5 w-auto-2 rtl-rr dp-height justify-content-lg-center"
       id="navbarSupportedContent"
     >
       <ul
-        class="list-group list-group-horizontal navbar-nav list-group-flush"
+        class="list-group list-group-horizontal navbar-nav list-group-flush nav-border primary-bg-color"
         [ngClass]="
           _sharedService.language == 'en' ? 'direction-ltr' : 'direction-rtl'
         "
@@ -73,7 +50,7 @@
             'mx-lg-3 mr-auto': _sharedService.language == 'en',
             ' mx-lg-3 ml-auto': _sharedService.language == 'ar'
           }"
-          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0"
+          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0 align-self-center"
           aria-expanded="true"
           (click)="onClick(1)"
           data-target="#navbarSupportedContent"
@@ -92,10 +69,10 @@
             id="aboutUs1"
             [ngClass]="
               _sharedService.language == 'en'
-                ? 'font-family-en font-14 font-w-800'
-                : 'font-family-ar font-18 font-w-800'
+                ? 'font-family-en font-14 '
+                : 'font-family-ar font-18 '
             "
-            class="cursor nav-link mb-0 black text-center text-lg-end height-md px-0 pt-0 m-0"
+            class="cursor nav-link mb-0 black text-center text-white text-lg-end height-md px-0 pt-0 m-0 pb-0"
           >
             Home
           </p>
@@ -106,7 +83,7 @@
             'mx-lg-3 mr-auto': _sharedService.language == 'en',
             ' mx-lg-3 ml-auto': _sharedService.language == 'ar'
           }"
-          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0"
+          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0 align-self-center"
           aria-expanded="true"
           (click)="onClick(1)"
           data-target="#navbarSupportedContent"
@@ -125,10 +102,10 @@
             id="aboutUs1"
             [ngClass]="
               _sharedService.language == 'en'
-                ? 'font-family-en font-14 font-w-800'
-                : 'font-family-ar font-18 font-w-800'
+                ? 'font-family-en font-14 '
+                : 'font-family-ar font-18 '
             "
-            class="cursor nav-link mb-0 black text-center text-lg-end height-md px-0 pt-0 m-0"
+            class="cursor nav-link mb-0 black text-center text-white text-lg-end height-md px-0 pt-0 m-0 pb-0"
           >
             New Arrival
           </p>
@@ -139,7 +116,7 @@
             'mx-lg-3 mr-auto': _sharedService.language == 'en',
             ' mx-lg-3 ml-auto': _sharedService.language == 'ar'
           }"
-          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0"
+          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0 align-self-center"
           aria-expanded="true"
           (click)="onClick(1)"
           data-target="#navbarSupportedContent"
@@ -158,10 +135,10 @@
             id="aboutUs1"
             [ngClass]="
               _sharedService.language == 'en'
-                ? 'font-family-en font-14 font-w-800'
-                : 'font-family-ar font-18 font-w-800'
+                ? 'font-family-en font-14 '
+                : 'font-family-ar font-18 '
             "
-            class="cursor nav-link mb-0 black text-center text-lg-end height-md px-0 pt-0 m-0"
+            class="cursor nav-link mb-0 black text-center text-white text-lg-end height-md px-0 pt-0 m-0 pb-0"
           >
             Sale
           </p>
@@ -172,7 +149,7 @@
             'mx-lg-3 mr-auto': _sharedService.language == 'en',
             ' mx-lg-3 ml-auto': _sharedService.language == 'ar'
           }"
-          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0"
+          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0 align-self-center"
           aria-expanded="true"
           (click)="onClick(1)"
           data-target="#navbarSupportedContent"
@@ -191,10 +168,10 @@
             id="aboutUs1"
             [ngClass]="
               _sharedService.language == 'en'
-                ? 'font-family-en font-14 font-w-800'
-                : 'font-family-ar font-18 font-w-800'
+                ? 'font-family-en font-14 '
+                : 'font-family-ar font-18 '
             "
-            class="cursor nav-link mb-0 black text-center text-lg-end height-md px-0 pt-0 m-0"
+            class="cursor nav-link mb-0 black text-center text-white text-lg-end height-md px-0 pt-0 m-0 pb-0"
           >
             Womens
           </p>
@@ -205,7 +182,7 @@
             'mx-lg-3 mr-auto': _sharedService.language == 'en',
             ' mx-lg-3 ml-auto': _sharedService.language == 'ar'
           }"
-          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0"
+          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0 align-self-center"
           aria-expanded="true"
           (click)="onClick(1)"
           data-target="#navbarSupportedContent"
@@ -224,10 +201,10 @@
             id="aboutUs1"
             [ngClass]="
               _sharedService.language == 'en'
-                ? 'font-family-en font-14 font-w-800'
-                : 'font-family-ar font-18 font-w-800'
+                ? 'font-family-en font-14 '
+                : 'font-family-ar font-18 '
             "
-            class="cursor nav-link mb-0 black text-center text-lg-end height-md px-0 pt-0 m-0"
+            class="cursor nav-link mb-0 black text-center text-white text-lg-end height-md px-0 pt-0 m-0 pb-0"
           >
             Girls
           </p>
@@ -238,7 +215,7 @@
             'mx-lg-3 mr-auto': _sharedService.language == 'en',
             ' mx-lg-3 ml-auto': _sharedService.language == 'ar'
           }"
-          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0"
+          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0 align-self-center"
           aria-expanded="true"
           (click)="onClick(1)"
           data-target="#navbarSupportedContent"
@@ -257,10 +234,10 @@
             id="aboutUs1"
             [ngClass]="
               _sharedService.language == 'en'
-                ? 'font-family-en font-14 font-w-800'
-                : 'font-family-ar font-18 font-w-800'
+                ? 'font-family-en font-14 '
+                : 'font-family-ar font-18 '
             "
-            class="cursor nav-link mb-0 black text-center text-lg-end height-md px-0 pt-0 m-0"
+            class="cursor nav-link mb-0 black text-center text-white text-lg-end height-md px-0 pt-0 m-0 pb-0"
           >
             stitched
           </p>
@@ -271,7 +248,7 @@
             'mx-lg-3 mr-auto': _sharedService.language == 'en',
             ' mx-lg-3 ml-auto': _sharedService.language == 'ar'
           }"
-          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0"
+          class="nav-item list-group-item flex-fill mx-auto border-0 mb-lg-0 my-3 my-lg-0 my-md-0 align-self-center" 
           aria-expanded="true"
           (click)="onClick(1)"
           data-target="#navbarSupportedContent"
@@ -290,15 +267,23 @@
             id="aboutUs1"
             [ngClass]="
               _sharedService.language == 'en'
-                ? 'font-family-en font-14 font-w-800'
-                : 'font-family-ar font-18 font-w-800'
+                ? 'font-family-en font-14 '
+                : 'font-family-ar font-18 '
             "
-            class="cursor nav-link mb-0 black text-center text-lg-end height-md px-0 pt-0 m-0"
+            class="cursor nav-link mb-0 black text-center text-white text-lg-end height-md px-0 pt-0 m-0 pb-0"
           >
             Unstitched
           </p>
         </li>
       </ul>
+    </div>
+    <div
+      class="col-auto mx-lg-auto"
+      [ngClass]="
+        _sharedService.language == 'en' ? 'mr-auto mr-lg-0' : 'ml-auto ml-lg-0'
+      "
+    >
+    <i class="ts logo" [ngClass]="_sharedService.language == 'en' ? 'pr-1' : 'pl-1'"></i>
     </div>
   </div>
 </nav>

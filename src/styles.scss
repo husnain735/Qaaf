@@ -137,3 +137,36 @@ button:focus {
 .font-family-en{
     font-family: $primary_font_en;
 }
+.primary-color{
+    color: #244870;
+}
+.secondary-color{
+    color: #ed3237;
+}
+.primary-bg-color{
+    background-color: #244870;
+}
+.secondary-bg-color{
+    background-color: #ed3237;
+}
+.ts {
+    display: inline-flex;
+}
+.ts::after {
+    fill: red;
+    content: " ";
+    width: 20px;
+    height: 20px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+.bb-secondary{
+    border-bottom: 5px solid red;
+}
+.black{
+    color: black;
+}
