@@ -1,9 +1,4 @@
 
-
-
-.nav1-heigh {
-    height: 4rem;
-}
 .nav-links-position{
     margin: auto;
 
@@ -133,6 +128,9 @@
     }
 }
 @media only screen and (max-width: 600px) {
+    .mb-banar{
+        display: none;
+    }
     .dp-height{
         height: 100vh;
     }
