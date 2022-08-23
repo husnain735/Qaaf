@@ -122,6 +122,64 @@
     height: 30px;
     width: 30px;
 }
+.upper-border{
+    border-left: 6px solid #ed3237;
+    border-right: 5px solid #ed3237;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    
+}
+.mb-slide-banar{
+    display: none;
+}
+.nav-b-r{
+    border-right: 1px solid #1164c1 !important;
+}
+
+  @media only screen and (max-width: 768px){
+    ul {
+        display: inline-grid !important;
+        width: 100%;
+        padding: 0;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        justify-content: center;
+    }
+    .ts.logo::after {
+        background-image: url("../../../assets/images/svg/QAAF-Logo.svg");
+        transform: scale(5.5) translate(-8px, 3px);
+    }
+    .nav-border{
+        border: unset;
+        border-bottom-left-radius: unset;
+        border-bottom-right-radius: unset;
+        border-top-left-radius: unset;
+        border-top-right-radius: unset;
+    }
+    .upper-border{
+        border-left: unset;
+        border-right: unset;
+        border-bottom-left-radius: unset;
+        border-bottom-right-radius: unset;
+        border-top-left-radius: unset;
+        border-top-right-radius: unset;
+        
+    }
+    .primary-bg-mb-color.primary-bg-color{
+        background-color: transparent !important;
+    }
+    .text-mb-white.text-white{
+        color: black !important;
+    }
+    .nav-b-r{
+        border-right: unset !important;
+    }
+    .mb-logo{
+        display: none;
+    }
+}
 @media only screen and (min-width: 601px) {
     .w-auto-2 {
       width: auto !important;
@@ -174,7 +232,7 @@
     }
     .ts.logo::after {
         background-image: url("../../../assets/images/svg/QAAF-Logo.svg");
-        transform: scale(5.5) translate(7px, 2px);
+        transform: scale(5.5) translate(-8px, 2px);
     }
     .nav-border{
         border: unset;
@@ -182,6 +240,15 @@
         border-bottom-right-radius: unset;
         border-top-left-radius: unset;
         border-top-right-radius: unset;
+    }
+    .upper-border{
+        border-left: unset;
+        border-right: unset;
+        border-bottom-left-radius: unset;
+        border-bottom-right-radius: unset;
+        border-top-left-radius: unset;
+        border-top-right-radius: unset;
+        
     }
     .text-mb-white.text-white{
         color: black !important;
@@ -192,14 +259,16 @@
     .text-mb-center{
         text-align: center;
     }
-  }
-  @media only screen and (max-width: 768px){
-    ul {
-        display: inline-grid !important;
+    .mb-slide-banar{
+        position: absolute;
+        bottom: 48px;
+        right: auto;
+        left: 0;
+        top: auto;
         width: 100%;
-        padding: 0;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        justify-content: center;
+        display: block;
     }
-}
+    .nav-b-r{
+        border-right: unset !important;
+    }
+  }
