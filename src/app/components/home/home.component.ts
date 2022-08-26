@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { SharedService } from 'src/app/shared/services/shared.service';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +12,15 @@ export class HomeComponent implements OnInit {
   apiData: any[];
   customOptions: OwlOptions = {
     loop: true,
-    autoplay: true,
+    autoplay: false,
     center: true,
-    dots: false,
+    dots: true,
     autoHeight: true,
     autoWidth: true,
+    smartSpeed: 800,
+    items: 1,
+    autoplayTimeout:7000,
+    rtl: this._sharedService.language == 'ar' ? true : false,
     responsive: {
       0: {
         items: 1,
@@ -29,18 +34,18 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor(public _sharedService: SharedService) { }
 
   ngOnInit(): void {
     this.apiData = [{
     url: '../../../assets/images/png/Facebook.png',
-    id:1
+    id:'1'
   },{
     url: '../../../assets/images/png/Facebook.png',
-    id:2
+    id:'2'
   },{
     url: '../../../assets/images/png/Facebook.png',
-    id:3
+    id:'3'
   }]
   }
 
