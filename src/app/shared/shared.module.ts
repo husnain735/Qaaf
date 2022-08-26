@@ -12,7 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     SharedRoutingModule,
-    NgbModule,
+    NgbModule
   ],
   exports:[
     NavbarComponent,FooterComponent,NgbModule
