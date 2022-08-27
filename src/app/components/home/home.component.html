@@ -3,7 +3,7 @@
   
       <ng-container *ngFor="let slide of apiData">
         <ng-template class="slide" carouselSlide [id]="slide.id">
-          <img style="height: 400px; object-fit: cover;" [src]="slide.url" [alt]="slide.id" [title]="slide.id">
+          <img class="carousel-img" style="object-fit: cover;" [src]="slide.url" [alt]="slide.id" >
         </ng-template>
       </ng-container>
   
