@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Item } from 'src/app/shared/models/Item';
+import { AdminService } from 'src/app/services/admin.service';
+import { ImageCompressService, ResizeOptions } from 'ng2-image-compress';
+import { ItemPicture } from 'src/app/shared/models/itempicture';
+import { CommonService } from 'src/app/services/common.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-add-item',
@@ -8,13 +13,19 @@ import { Item } from 'src/app/shared/models/Item';
 })
 export class AddItemComponent implements OnInit {
 
-  constructor() { }
+  constructor(private adminService:AdminService,private _commonService: CommonService, public _sharedService: SharedService) { }
+  @ViewChild('imageUpload', { static: false }) imageUpload;
+  @ViewChild('modelImageUpload', { static: false }) modelImageUpload;
   model: Item;
   colorCode = [];
   isColored: boolean = true;
   isNumberOfPiece: boolean = true;
   isGender: boolean = true;
   isStitched: boolean = true;
+  compressedImages: Array<ItemPicture>;
+  imageObj: ItemPicture;
+  openedAccidentImages : Array<ItemPicture>;
+  ObjectTypeID: number = 11;
   ngOnInit(): void {
     this.colorCode = [
     {
@@ -193,7 +204,85 @@ export class AddItemComponent implements OnInit {
     }
 
   }
+  uploadFiles($event: any, ObjectTypeID: number) {
+
+    var totalImages = $event.target.files.length;
+    if ($event.target.files.length > 0) {
+      //this._sharedService.loading = true;
+      //image compress options
+      var option: ResizeOptions = new ResizeOptions();
+      option.Resize_Quality = 80;
+      option.Resize_Type = 'image/jpg';
+      this.compressedImages = new Array<ItemPicture>();
+      //compress image
+      ImageCompressService.filesToCompressedImageSourceEx($event.target.files, option).then(observableImages => {
+
+        observableImages.subscribe((image: any) => {
+
+          this.imageObj = new ItemPicture();
+          this.imageObj.ImageURL = image.compressedImage.imageDataUrl;
+          this.imageObj.OriginalName = image.compressedImage.fileName;
+
+          this.compressedImages.push(this.imageObj);
+          totalImages--;
+          if (totalImages == 0 || totalImages < 0) {
+            // send compresed image base64 to api to save
+            this._commonService.saveAllImage(this.compressedImages)
+              .subscribe(res => {
+                if (res != undefined) {
+                  if (this.model.ItemPicture == undefined) {
+                    this.model.ItemPicture = new Array<ItemPicture>();
+                  }
+                  res.forEach(element => {
+                    this.imageObj = new ItemPicture();
+                    this.imageObj.ItemPictureId = Math.floor((Math.random() * -1000) - 1);
+                    this.imageObj.ImageURL = element.ImageURL;
+                    this.imageObj.EncryptedName = element.EncryptedName;
+                    this.imageObj.OriginalName = element.OriginalName;
+                    this.imageObj.ObjectTypeID = ObjectTypeID;   // For accident images type id will be 14
+                    this.model.ItemPicture.push(this.imageObj);
+                    if(this.openedAccidentImages !=undefined)
+                    this.openedAccidentImages.push(this.imageObj);
+                  });
+                }
+
+                //this._sharedService.success("NOTIFICATIONS.IMAGEUPLOADED");
+                $event = undefined;
+                if (this.imageUpload != undefined)
+                  this.imageUpload.nativeElement.value = '';
+                if (this.modelImageUpload != undefined)
+                  this.modelImageUpload.nativeElement.value = '';
+              },
+                error => {
+                  //this._sharedService.error(error.Message)
+                });
+          }
+
+        }, (error) => {
+          $event = undefined;
+          if (this.imageUpload != undefined)
+            this.imageUpload.nativeElement.value = '';
+          if (this.modelImageUpload != undefined)
+            this.modelImageUpload.nativeElement.value = '';
+          //this._sharedService.error(error.Message);
+         // this._sharedService.loading = false;
+        });
+      });
+    } else {
+      //this._sharedService.warning("WARNINGS.UPLOADIMAGE")
+    }
+  }
   onSubmit() {
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model, null, 4));
+    var idx = this.colorCode.findIndex(i => i.isChecked == true);
+    if (idx > -1) {
+      this.model.ColorCode = this.colorCode[idx].code;
+    }else{
+      return;
+    }
+    this.adminService.saveItem(this.model).subscribe((res: any) => {
+      this.model = new Item();
+    }, error => {
+
+    })
   }
 }

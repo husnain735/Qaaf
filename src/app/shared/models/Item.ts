@@ -1,3 +1,5 @@
+import { ItemPicture } from "./itempicture";
+
 export class Item {
     ItemId: number;
     Title: string;
@@ -19,5 +21,6 @@ export class Item {
     NumberOfPiece: number; 
     IsSale: Boolean;
     AddressLink: string;
+    ItemPicture: Array<ItemPicture>;
 
 }

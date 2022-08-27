@@ -173,3 +173,15 @@
         </div>
     </div>
 </div>
+
+<input id="file_upload" #modelImageUpload multiple type="file" accept="image/gif,image/jpeg,image/*,image/png"  
+       (change)="uploadFiles($event, ObjectTypeID)">
+<span class="mx-3 mb-3" *ngFor="let img of model.ItemPicture">
+    <span class="picsum-img-wrapper">
+        <img [src]="_sharedService.baseURL + img.ImageURL"
+             class="document-img">
+    </span>
+</span>
+
+
+

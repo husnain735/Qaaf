@@ -23,8 +23,10 @@
     "@popperjs/core": "^2.10.2",
     "angular-animations": "^0.11.0",
     "bootstrap": "^5.2.0",
+    "ng2-image-compress": "^7.0.7",
     "ngx-owl-carousel-o": "^14.0.1",
-    "rxjs": "~7.5.0",
+    "rxjs": "^6.4.0",
+    "rxjs-compat": "^6.6.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

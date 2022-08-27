@@ -1,4 +1,4 @@
-export class Item {
+export class ItemSize {
  ItemSizeId: number;
  IsDeleted: boolean;
  ItemId: number;

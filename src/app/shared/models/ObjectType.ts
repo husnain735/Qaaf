@@ -1,4 +1,4 @@
-export class Item {
+export class ObjectType {
 
 ObjectTypeId: number;
  ObjectTypeName: string;

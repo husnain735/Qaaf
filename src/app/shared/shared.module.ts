@@ -5,6 +5,7 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -12,10 +13,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     SharedRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   exports:[
-    NavbarComponent,FooterComponent,NgbModule
+    NavbarComponent,FooterComponent,NgbModule,HttpClientModule
   ]
 })
 export class SharedModule { }
