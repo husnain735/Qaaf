@@ -13,11 +13,6 @@
 .z-index-2{
     z-index: 10;
 }
-.navbar-position{
-    position: fixed;
-    width: 100%;
-    background-color: white;
-}
 .navbar-toggler:focus,
 .navbar-toggler:active {
     outline: 0;
@@ -287,5 +282,22 @@
         border-top-right-radius: unset;
         
     }
-  
+    .navbar-position{
+        position: fixed;
+        width: 100%;
+        background-color: white;
+    }
+  }
+  @media only screen and (max-width: 400px) {
+    .my-3 {
+      margin-top: 0.5rem !important;
+      margin-bottom: 0.5rem !important;
+    }
+    
+  }
+  @media only screen and (max-width: 370px) {
+    .my-3 {
+      margin-top: 0.5rem !important;
+      margin-bottom: 0.5rem !important;
+    } 
   }
