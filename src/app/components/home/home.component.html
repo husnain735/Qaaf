@@ -1,12 +1,13 @@
-<div class="home-page wrapper">
+<div class="wrapper">
     <owl-carousel-o [options]="customOptions">
   
       <ng-container *ngFor="let slide of apiData">
         <ng-template class="slide" carouselSlide [id]="slide.id">
-          <img class="carousel-img" style="object-fit: cover;" [src]="slide.url" [alt]="slide.id" >
+          <img class="carousel-img" style="object-fit: cover; height: 400px;" [src]="slide.url" [alt]="slide.id" >
         </ng-template>
       </ng-container>
   
     </owl-carousel-o>  
-  </div>
+</div>
+
   
