@@ -1,11 +1,10 @@
 /*FOOTER*/
 
-footer {
+footer{
     background: #244870;
     // background: -webkit-linear-gradient(59deg, #3A6073, #16222A);
     // background: linear-gradient(59deg, #3A6073, #16222A);
     color: white;
-    margin-top:100px;
   }
   
   footer a {
@@ -115,6 +114,7 @@ footer {
   }
   .footer-position{
     position: absolute;
-    bottom: 0;
+    top: 100%;
+    left: 0%;
     width: 100%;
   }
