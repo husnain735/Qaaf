@@ -38,13 +38,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiData = [{
-    url: '../../../assets/images/png/Facebook.png',
+    url: '../../../assets/images/jpg/carousel 1.jpg',
     id:'1'
   },{
-    url: '../../../assets/images/png/Facebook.png',
+    url: '../../../assets/images/jpg/carousel 2.jpg',
     id:'2'
   },{
-    url: '../../../assets/images/png/Facebook.png',
+    url: '../../../assets/images/jpg/carousel 3.jpg',
     id:'3'
   }]
   }
