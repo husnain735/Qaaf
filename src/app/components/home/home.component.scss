@@ -49,6 +49,10 @@
   border-top-right-radius: 30px;
   color: white;
 }
+.card-img{
+  margin: 0 auto 0 auto;
+width: 30%;
+}
 @media only screen and (max-width: 600px) {
   ::ng-deep .owl-theme .owl-dots .owl-dot span {
     border-radius: 15px;
