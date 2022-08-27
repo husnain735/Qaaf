@@ -27,5 +27,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 
-npm i rxjs@6.4.0
-npm i rxjs-compat
+npm i rxjs@6.4.0 --force --save
+npm i rxjs-compat@6.6.7 --force --save
+
+npm i ng2-image-compress@7.0.7 --force --save
+
+
