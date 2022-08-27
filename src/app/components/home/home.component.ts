@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   apiData: any[];
   customOptions: OwlOptions = {
     loop: true,
-    autoplay: false,
+    autoplay: true,
     center: true,
     dots: true,
     autoHeight: true,

@@ -167,7 +167,10 @@ button:focus {
     vertical-align: middle;
 }
 .bb-secondary{
-    border-bottom: 5px solid red;
+    border-bottom: 5px solid rgb(231, 66, 66);
+}
+.bb-secondary-8px{
+    border-bottom: 10px solid rgb(231, 66, 66);
 }
 .black{
     color: black;
