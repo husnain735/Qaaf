@@ -8,12 +8,14 @@ import { SharedModule } from './shared/shared.module';
 import { FullLayoutComponent } from './layouts/full-layout/full-layout.component';
 import { HomeComponent } from './components/home/home.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { SimpleLayoutComponent } from './layouts/simple-layout/simple-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FullLayoutComponent,
-    HomeComponent
+    HomeComponent,
+    SimpleLayoutComponent
   ],
   imports: [
     BrowserAnimationsModule,
