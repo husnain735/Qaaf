@@ -30,4 +30,5 @@ export class AdminSignInComponent implements OnInit {
       this.router.navigate(['/']);
     }
   }
+  public showPassword: boolean;
 }
