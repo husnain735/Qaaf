@@ -14,4 +14,8 @@ export class CommonService {
     var url = 'api/Common/SaveAllImage';
     return this._customHttpService.post(url, images);
   }
+  removeImage(imageName){
+    var url = 'api/Common/RemoveImage';
+    return this._customHttpService.post(url, {'EncryptedName':imageName});
+  }
 }

@@ -5,6 +5,7 @@ import { ImageCompressService, ResizeOptions } from 'ng2-image-compress';
 import { ItemPicture } from 'src/app/shared/models/itempicture';
 import { CommonService } from 'src/app/services/common.service';
 import { SharedService } from 'src/app/services/shared.service';
+import { ItemViewModel } from 'src/app/shared/models/ViewModels/ItemViewModel';
 
 @Component({
   selector: 'app-add-item',
@@ -16,7 +17,7 @@ export class AddItemComponent implements OnInit {
   constructor(private adminService:AdminService,private _commonService: CommonService, public _sharedService: SharedService) { }
   @ViewChild('imageUpload', { static: false }) imageUpload;
   @ViewChild('modelImageUpload', { static: false }) modelImageUpload;
-  model: Item;
+  ItemViewModel: ItemViewModel;
   colorCode = [];
   isColored: boolean = true;
   isNumberOfPiece: boolean = true;
@@ -154,7 +155,7 @@ export class AddItemComponent implements OnInit {
       isChecked: false
     }
   ]
-  this.model = new Item();
+  this.ItemViewModel = new ItemViewModel();
   }
   
   
@@ -185,19 +186,19 @@ export class AddItemComponent implements OnInit {
       this.isColored = false;
     }
 
-    if (this.model.GenderTypeId == undefined) {
+    if (this.ItemViewModel.Item.GenderTypeId == undefined) {
       this.isGender = false;
     }else{
       this.isGender = true;
     }
 
-    if (this.model.NumberOfPiece == undefined) {
+    if (this.ItemViewModel.Item.NumberOfPiece == undefined) {
       this.isNumberOfPiece = false;
     }else{
       this.isNumberOfPiece = true;
     }
 
-    if (this.model.StitchTypeId == undefined) {
+    if (this.ItemViewModel.Item.StitchTypeId == undefined) {
       this.isStitched = false;
     }else{
       this.isStitched = true;
@@ -230,8 +231,8 @@ export class AddItemComponent implements OnInit {
             this._commonService.saveAllImage(this.compressedImages)
               .subscribe(res => {
                 if (res != undefined) {
-                  if (this.model.ItemPicture == undefined) {
-                    this.model.ItemPicture = new Array<ItemPicture>();
+                  if (this.ItemViewModel.ItemPictures == undefined) {
+                    this.ItemViewModel.ItemPictures = new Array<ItemPicture>();
                   }
                   res.forEach(element => {
                     this.imageObj = new ItemPicture();
@@ -239,8 +240,9 @@ export class AddItemComponent implements OnInit {
                     this.imageObj.ImageURL = element.ImageURL;
                     this.imageObj.EncryptedName = element.EncryptedName;
                     this.imageObj.OriginalName = element.OriginalName;
-                    this.imageObj.ObjectTypeID = ObjectTypeID;   // For accident images type id will be 14
-                    this.model.ItemPicture.push(this.imageObj);
+                    this.imageObj.ObjectTypeID = ObjectTypeID;
+                    this.imageObj.IsPrimary = false; 
+                    this.ItemViewModel.ItemPictures.push(this.imageObj);
                     if(this.openedAccidentImages !=undefined)
                     this.openedAccidentImages.push(this.imageObj);
                   });
@@ -275,14 +277,48 @@ export class AddItemComponent implements OnInit {
   onSubmit() {
     var idx = this.colorCode.findIndex(i => i.isChecked == true);
     if (idx > -1) {
-      this.model.ColorCode = this.colorCode[idx].code;
+      this.ItemViewModel.Item.ColorCode = this.colorCode[idx].code;
     }else{
       return;
     }
-    this.adminService.saveItem(this.model).subscribe((res: any) => {
-      this.model = new Item();
+    if (this.ItemViewModel.ItemPictures == undefined || this.ItemViewModel.ItemPictures.length == 0) {
+      return;
+    }
+    if (this.ItemViewModel.ItemPictures != undefined && this.ItemViewModel.ItemPictures.length > 0) {
+      var idx = this.ItemViewModel.ItemPictures.findIndex(a => a.IsPrimary);
+      if (idx == -1) {
+        return;
+      }
+    }
+    this.adminService.saveItem(this.ItemViewModel).subscribe((res: any) => {
+      this.ItemViewModel = new ItemViewModel();
+      this.colorCode.forEach(a => a.isChecked = false);
     }, error => {
 
     })
+  }
+  removeImage(img){
+    this._commonService.removeImage(img.EncryptedName).subscribe((res: any) => {
+      var idx = this.ItemViewModel.ItemPictures.findIndex(a => a.EncryptedName == img.EncryptedName);
+      if (idx > -1) {
+        this.ItemViewModel.ItemPictures.splice(idx, 1);
+      }
+      
+    }, error => {
+
+    })
+  }
+  primaryImage(img){
+    debugger
+    var idx = this.ItemViewModel.ItemPictures.findIndex(a => a.IsPrimary);
+    if (idx > -1) {
+      this.ItemViewModel.ItemPictures[idx].IsPrimary = false; 
+    }
+    this.ItemViewModel.ItemPictures.forEach(a => {
+      if (a.EncryptedName == img.EncryptedName) {
+        a.IsPrimary = true;
+      }
+    })
+
   }
 }

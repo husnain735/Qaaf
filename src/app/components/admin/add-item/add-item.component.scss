@@ -10,3 +10,30 @@
     right: 0;
     left: auto;
 }
+.document-img {
+    width: 250px;
+    height: 150px;
+    border-radius: 5px;
+    border: 1px solid white;
+}
+.upload-image-relative{
+    position: relative;
+    width: 38px;
+    opacity: 0;
+    z-index: 1;
+}
+.upload-image-absolute{
+    position: absolute;
+    font-size: 31px;
+    left: 15px;
+    width: 50px;
+}
+.remove-icon{
+    position: absolute;
+    top: 0;
+    right: 12px;
+    color: #dc3545;
+}
+.isprimary{
+    border: 5px solid #dc3545;
+}

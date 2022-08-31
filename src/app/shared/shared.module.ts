@@ -6,10 +6,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { BlockCopyPasteDirective } from '../directives/block-copy-paste.directive';
 
 
 @NgModule({
-  declarations: [NavbarComponent,FooterComponent],
+  declarations: [NavbarComponent,FooterComponent,BlockCopyPasteDirective],
   imports: [
     CommonModule,
     SharedRoutingModule,
@@ -17,7 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   exports:[
-    NavbarComponent,FooterComponent,NgbModule,HttpClientModule
+    NavbarComponent,FooterComponent,NgbModule,HttpClientModule,BlockCopyPasteDirective
   ]
 })
 export class SharedModule { }
