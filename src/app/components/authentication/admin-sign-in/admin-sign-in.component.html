@@ -1,42 +1,57 @@
 <ng-template #content let-modal>
-    <div class="modal-body">
-        <input type="text" placeholder="enter code" class="form-control" [(ngModel)]="ProCode">
-        <button type="button" class="btn btn-primary mt-2" (click)="checkCode()">check</button>
+  <div class="modal-body">
+    <input
+      type="text"
+      placeholder="enter code"
+      class="form-control"
+      [(ngModel)]="ProCode"
+    />
+    <button type="button" class="btn btn-primary mt-2" (click)="checkCode()">
+      check
+    </button>
+  </div>
+</ng-template>
+<!-- <div class="main-container"> -->
+<div class="bg-img">
+  <div class="row mx-0" style="height: 100vh">
+    <div class="col-6 d-lg-block d-none">
     </div>
-  </ng-template>
-  <div class="main-container">
-  <div class="container">
-    <div class="login-box">
-        <form action="">
-
-            <h1 class="text-center m-4 mb-5" style="font-family: cursive; color: #244870;">LOG IN</h1>
-            <div class="input-box">
-                <input type="email" name="email" id="email" placeholder="Enter Email">
-            </div>
-            <div class="input-box-pass" >
-                <div class="form-group inner-addon right-addon">
-                    <div class="input-group col-6 mx-auto">
-                      <input name="password" style="background: rgb(248, 248, 248); border-radius: 15px; padding: 22px 15px; border: 2px solid #ed3237;"
-                          [type]="showPassword ? 'text' : 'password'"
-                          class="form-control pwd-control"
-                          id="password-field" placeholder="Enter Password">
-                      <div>
-                        <i alt="show" class="far fa-eye eye-show" 
-                        (click)="showPassword = !showPassword"
-                        [class.hide]="showPassword"></i>
-                        <i alt="hide" class="far fa-eye-slash eye-hide" 
-                        (click)="showPassword = !showPassword"
-                        [class.hide]="!showPassword"></i>
-                      </div>
-                    </div>
-                  </div>
-            </div>
-            <input class="login-button" type="button" value="Log in">
-
+    <div class="col-lg-6 col-12 align-self-center">
+      <div class="d-flex justify-content-center">
+        <form class="col-lg-6 col-12 form-border p-3">
+          <h1
+            class="text-center mb-5 login-txt"
+          >
+            LOG IN
+          </h1>
+          <div class="input-box">
+            <input type="email" name="email" id="email" placeholder="Enter Email" />
+          </div>
+          <div class="input-box p-relative">
+            <input
+              name="password"
+              [type]="showPassword ? 'text' : 'password'"
+              id="password-field"
+              placeholder="Enter Password"
+            />
+            <i
+                alt="show"
+                class="far fa-eye eye-show eye-icon"
+                (click)="showPassword = !showPassword"
+                [class.hide]="showPassword"
+              ></i>
+              <i
+                alt="hide"
+                class="far fa-eye-slash eye-hide eye-icon"
+                (click)="showPassword = !showPassword"
+                [class.hide]="!showPassword"
+              ></i>
+          </div>
+          <input class="login-button" type="button" value="Log in" />
         </form>
-
+      </div>
     </div>
   </div>
-  </div>
-  
-  
+ 
+</div>
+<!-- </div> -->

@@ -19,7 +19,7 @@ export class AdminSignInComponent implements OnInit {
   constructor(private modalService: NgbModal,public _sharedService: SharedService,private router: Router) { }
 
   ngOnInit(): void {
-    this.modalService.open(this.content, { ariaLabelledBy: 'modal-basic-title', centered: false ,backdrop: 'static'});
+    //this.modalService.open(this.content, { ariaLabelledBy: 'modal-basic-title', centered: false ,backdrop: 'static'});
   }
   checkCode(){
     if (this.ProCode == this.ValidCode) {
