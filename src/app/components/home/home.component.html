@@ -19,110 +19,23 @@
 </div>
 <div class="container-fluid mt-5">
   <div class="row mx-0">
-    <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
-      <div class="card b-shadow c-border">
-        <div class="card-header b-zero">
-          <div class="p-relative pt-100">
-            <img class="card-img" src="../../../assets/images/png/clothes-png-15592.png" alt="Card image cap">
+    <ng-container *ngFor="let item of ItemModel.Items">
+      <ng-container *ngFor="let itemPictures of ItemModel.ItemPictures | filter : item.ItemId : 'ItemId' | filter : 1 : 'IsPrimary'">
+        <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
+          <div class="card b-shadow c-border">
+            <div class="card-header b-zero p-0">
+              <div class="p-relative pt-100">
+                <img class="card-img" [src]="api_url + itemPictures.ImageURL" alt="Card image cap">
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">BLENCOT Womens Casual Floral Deep V Neck Long Sleeve Long Evening Dress Cocktail Party Maxi</h5>
+              <p class="card-text">$48.98</p>
+            </div>
           </div>
         </div>
-        <div class="card-body">
-          <h5 class="card-title">BLENCOT Womens Casual Floral Deep V Neck Long Sleeve Long Evening Dress Cocktail Party Maxi</h5>
-          <p class="card-text">$48.98</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
-      <div class="card b-shadow c-border">
-        <div class="card-header b-zero">
-          <div class="p-relative pt-100">
-            <img class="card-img" src="../../../assets/images/png/clothes-png-15592.png" alt="Card image cap">
-          </div>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">BLENCOT Womens Casual Floral Deep V Neck Long Sleeve Long Evening Dress Cocktail Party Maxi</h5>
-          <p class="card-text">$48.98</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
-      <div class="card b-shadow c-border">
-        <div class="card-header b-zero">
-          <div class="p-relative pt-100">
-            <img class="card-img" src="../../../assets/images/png/clothes-png-15592.png" alt="Card image cap">
-          </div>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">BLENCOT Womens Casual Floral Deep V Neck Long Sleeve Long Evening Dress Cocktail Party Maxi</h5>
-          <p class="card-text">$48.98</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
-      <div class="card b-shadow c-border">
-        <div class="card-header b-zero">
-          <div class="p-relative pt-100">
-            <img class="card-img" src="../../../assets/images/png/clothes-png-15592.png" alt="Card image cap">
-          </div>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">BLENCOT Womens Casual Floral Deep V Neck Long Sleeve Long Evening Dress Cocktail Party Maxi</h5>
-          <p class="card-text">$48.98</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
-      <div class="card b-shadow c-border">
-        <div class="card-header b-zero">
-          <div class="p-relative pt-100">
-            <img class="card-img" src="../../../assets/images/png/clothes-png-15592.png" alt="Card image cap">
-          </div>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">BLENCOT Womens Casual Floral Deep V Neck Long Sleeve Long Evening Dress Cocktail Party Maxi</h5>
-          <p class="card-text">$48.98</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
-      <div class="card b-shadow c-border">
-        <div class="card-header b-zero">
-          <div class="p-relative pt-100">
-            <img class="card-img" src="../../../assets/images/png/clothes-png-15592.png" alt="Card image cap">
-          </div>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">BLENCOT Womens Casual Floral Deep V Neck Long Sleeve Long Evening Dress Cocktail Party Maxi</h5>
-          <p class="card-text">$48.98</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
-      <div class="card b-shadow c-border">
-        <div class="card-header b-zero">
-          <div class="p-relative pt-100">
-            <img class="card-img" src="../../../assets/images/png/clothes-png-15592.png" alt="Card image cap">
-          </div>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">BLENCOT Womens Casual Floral Deep V Neck Long Sleeve Long Evening Dress Cocktail Party Maxi</h5>
-          <p class="card-text">$48.98</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
-      <div class="card b-shadow c-border">
-        <div class="card-header b-zero">
-          <div class="p-relative pt-100">
-            <img class="card-img" src="../../../assets/images/png/clothes-png-15592.png" alt="Card image cap">
-          </div>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">BLENCOT Womens Casual Floral Deep V Neck Long Sleeve Long Evening Dress Cocktail Party Maxi</h5>
-          <p class="card-text">$48.98</p>
-        </div>
-      </div>
-    </div>
+      </ng-container>
+    </ng-container>
   </div>
 </div>
 

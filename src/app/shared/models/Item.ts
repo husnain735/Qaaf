@@ -19,7 +19,7 @@ export class Item {
     IsSold: boolean;
     GenderTypeId: number;
     NumberOfPiece: number; 
-    IsSale: Boolean;
+    IsSale: Boolean = false;
     AddressLink: string;
     ItemPicture: Array<ItemPicture>;
 
