@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomHttpService } from 'src/app/services/customhttp.service';
 
 @Component({
   selector: 'app-admin-navbar',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminNavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _customhttpservice: CustomHttpService) { }
 
   ngOnInit(): void {
   }
-
+ signout() {
+  this._customhttpservice.signout();
+}
 }
