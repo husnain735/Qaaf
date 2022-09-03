@@ -35,9 +35,11 @@ export class AdminSignInComponent implements OnInit {
   }
   login(){
     this._authService.onLogin(this.userObj.Email, this.userObj.Password).subscribe((res: any) => {
+        debugger
         this._sharedService.tokenObj = new Object();
         this._sharedService.tokenObj = res;
         localStorage.setItem('user', JSON.stringify(res));
+        localStorage.setItem('access_token', res.access_token);
         this.router.navigate(['/admin/']);
 
     }, error => {
