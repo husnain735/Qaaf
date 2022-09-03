@@ -153,7 +153,7 @@ export class CustomHttpService {
   }
 
   post(url: string, data: any): Observable<any[]> {
-    
+    debugger
     this.pendingRequests++;
     this._sharedService.loading = true;
     this.httpOptions = {
@@ -178,7 +178,7 @@ export class CustomHttpService {
         if (e.status === 401) {
           this.pendingRequests=0;
           this._sharedService.loading = false;
-          this.signout();
+          //this.signout();
         }
         return throwError(e.error);
       });
