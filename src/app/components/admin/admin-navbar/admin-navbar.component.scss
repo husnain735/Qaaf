@@ -1,0 +1,18 @@
+.admin-nav{
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background: #162026;
+    height: 64px;
+    width: 100%;
+    border-bottom: 4px solid rgb(231, 66, 66);
+
+}
+.ts.logo::after {
+    background-image: url("../../../../assets/images/svg/QAAF-Logo.svg");
+    transform: scale(5.5)translate(10px, 5px);
+    
+}
+.log-out-sign{
+    font-size: 22px;
+}
