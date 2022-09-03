@@ -9,7 +9,9 @@ export class SharedService {
   logged_user_id: any;
   loading: boolean = false;
   baseURL = environment.API_URL;
-  constructor() { }
+  tokenObj: any;
+  constructor() {
+  }
 
   error(message: string) {
     //this._toastr.error(this.translate.instant(message));

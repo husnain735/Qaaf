@@ -280,6 +280,25 @@
                 Select atleast one number of piece
               </div>
             </div>
+            <div class="row mx-0 my-5">
+              <label class="font-22 mb-3">Sale</label>
+              <div class="form-check col-6">
+                <input
+                  class="form-check-input cursor"
+                  type="checkbox"
+                  (change)="
+                  ItemViewModel.Item.IsSale = !ItemViewModel.Item.IsSale"
+                  [checked]="ItemViewModel.Item.IsSale == true"
+                  name="exampleRadios"
+                  id="IsSale"
+                  value="4"
+                  checked
+                />
+                <label class="form-check-label cursor" for="IsSale">
+                  IsSale
+                </label>
+              </div>
+            </div>
             <div class="form-group">
               <label>Color Code</label>
               <div class="row mx-0">
