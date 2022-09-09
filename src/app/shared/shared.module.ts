@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BlockCopyPasteDirective } from '../directives/block-copy-paste.directive';
 import { FilterPipe } from '../pipes/filter.pipe';
 
-
 @NgModule({
   declarations: [NavbarComponent,FooterComponent,BlockCopyPasteDirective,FilterPipe],
   imports: [

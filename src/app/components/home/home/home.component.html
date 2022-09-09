@@ -1,0 +1,99 @@
+<div class="wrapper">
+    <owl-carousel-o [options]="customOptions">
+  
+      <ng-container *ngFor="let slide of apiData">
+        <ng-template class="slide" carouselSlide [id]="slide.id">
+          <img class="carousel-img" style="object-fit: cover; height: 400px;" [src]="slide.url" [alt]="slide.id" >
+        </ng-template>
+      </ng-container>
+  
+    </owl-carousel-o>  
+</div>
+
+<div class="row mx-0 mt-5">
+  <div class="col-12 text-center"> 
+      <div class="qaaf-box display-inline"><h5>QAAF</h5></div>
+      <div class="new-box display-inline"><h5>NEW PRODUCTS</h5></div>
+
+  </div>
+</div>
+<div class="container-fluid mt-5">
+  <div class="row mx-0">
+    <ng-container *ngFor="let item of ItemModel.New">
+       <ng-container *ngFor="let itemPictures of ItemModel.NewPictures | filter : item.ItemId : 'ItemId' | filter : 1 : 'IsPrimary'">
+        <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
+          <div class="card b-shadow c-border">
+            <div class="card-header b-zero p-0">
+              <div class="p-relative pt-100">
+                <img class="card-img" [src]="api_url + itemPictures.ImageURL" alt="Card image cap">
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title font-15">BLENCOT Womens Casual</h5>
+              <p class="card-text font-14">$48.98</p>
+            </div>
+          </div>
+        </div>
+      </ng-container> 
+    </ng-container>  
+  </div>
+</div>
+
+<div class="row mx-0 mt-5">
+  <div class="col-12 text-center"> 
+      <div class="qaaf-box display-inline"><h5>QAAF</h5></div>
+      <div class="new-box display-inline"><h5>SALE PRODUCTS</h5></div>
+
+  </div>
+</div>
+<div class="container-fluid mt-5">
+  <div class="row mx-0">
+    <ng-container *ngFor="let item of ItemModel.Sale">
+       <ng-container *ngFor="let itemPictures of ItemModel.SalePictures | filter : item.ItemId : 'ItemId' | filter : 1 : 'IsPrimary'">
+        <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
+          <div class="card b-shadow c-border">
+            <div class="card-header b-zero p-0">
+              <div class="p-relative pt-100">
+                <img class="card-img" [src]="api_url + itemPictures.ImageURL" alt="Card image cap">
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title font-15">BLENCOT Womens Casual</h5>
+              <p class="card-text font-14">$48.98</p>
+            </div>
+          </div>
+        </div>
+      </ng-container> 
+    </ng-container>  
+  </div>
+</div>
+
+<div class="row mx-0 mt-5">
+  <div class="col-12 text-center"> 
+      <div class="qaaf-box display-inline"><h5>QAAF</h5></div>
+      <div class="new-box display-inline"><h5>UNSTITCHED</h5></div>
+
+  </div>
+</div>
+<div class="container-fluid mt-5 pb-5">
+  <div class="row mx-0 pb-5">
+    <ng-container *ngFor="let item of ItemModel.UnStitched">
+       <ng-container *ngFor="let itemPictures of ItemModel.UnStitchedPictures | filter : item.ItemId : 'ItemId' | filter : 1 : 'IsPrimary'">
+        <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
+          <div class="card b-shadow c-border">
+            <div class="card-header b-zero p-0">
+              <div class="p-relative pt-100">
+                <img class="card-img" [src]="api_url + itemPictures.ImageURL" alt="Card image cap">
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title font-15">BLENCOT Womens Casual</h5>
+              <p class="card-text font-14">$48.98</p>
+            </div>
+          </div>
+        </div>
+      </ng-container> 
+    </ng-container>  
+  </div>
+</div>
+

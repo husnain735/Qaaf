@@ -8,9 +8,9 @@ export class ItemService {
   defaultUrl = 'api/Item/';
   constructor(public _customHttpService: CustomHttpService) { }
 
-  GetAllItems(IsSale,IsGender,IsStitch,IsPrimary,ItemId){
+  GetAllItems(IsSale,IsGender,IsStitch,IsPrimary,ItemId,IsHomePage){
     return this._customHttpService.get(this.defaultUrl + 'GetAllItems', {IsSale: IsSale,IsGender:IsGender,
-        IsStitch:IsStitch,IsPrimary: IsPrimary,ItemId:ItemId});
+        IsStitch:IsStitch,IsPrimary: IsPrimary,ItemId:ItemId,IsHomePage:IsHomePage});
   }
 
 }

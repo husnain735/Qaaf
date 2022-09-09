@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import { SharedService } from './shared.service';
 import { environment } from 'src/environments/environment';
 import { Observable ,throwError } from 'rxjs';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -178,7 +179,7 @@ export class CustomHttpService {
         if (e.status === 401) {
           this.pendingRequests=0;
           this._sharedService.loading = false;
-          //this.signout();
+          this.signout();
         }
         return throwError(e.error);
       });
@@ -218,7 +219,7 @@ export class CustomHttpService {
 
   signout() {
     localStorage.clear();
-    // this._router.navigate(['/auth/sign-in'])
+    this._router.navigate(['/auth/admin-sign-in'])
   }
 }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { SharedService } from './services/shared.service';
 
 @Component({
   selector: 'app-root',
@@ -7,15 +7,10 @@ import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  model: NgbDateStruct;
-  date: {year: number, month: number};
 
-  constructor(private calendar: NgbCalendar) {
+  constructor(public _sharedService: SharedService,) {
   }
 
-  selectToday() {
-    this.model = this.calendar.getToday();
-    
-  }
+  
 
 }

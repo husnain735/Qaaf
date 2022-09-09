@@ -1,7 +1,9 @@
-<div *ngIf="!(router.url.includes('/admin'))">
+<div class="body-relative">
+  <div *ngIf="!router.url.includes('/admin')">
     <app-navbar></app-navbar>
-</div>
-<router-outlet></router-outlet>
-<div *ngIf="!(router.url.includes('/admin'))">
+  </div>
+  <router-outlet></router-outlet>
+  <div *ngIf="!router.url.includes('/admin')">
     <app-footer></app-footer>
+  </div>
 </div>

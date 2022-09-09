@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
   IsStitch: number = undefined;
   IsPrimary: boolean = undefined;
   ItemId: number = undefined;
+  IsHomePage: boolean = true;
   ItemModel: ItemViewModel;
   api_url = environment.API_URL;
   constructor(
@@ -67,9 +68,8 @@ export class HomeComponent implements OnInit {
     this.GetAllItems();
   }
   GetAllItems(){
-    this._itemService.GetAllItems(this.IsSale,this.IsGender,this.IsStitch,this.IsPrimary,this.ItemId).subscribe((res: any) => {
+    this._itemService.GetAllItems(this.IsSale,this.IsGender,this.IsStitch,this.IsPrimary,this.ItemId,this.IsHomePage).subscribe((res: any) => {
       this.ItemModel = res;
-      console.log(this.ItemModel);
     }, error => {
 
     })

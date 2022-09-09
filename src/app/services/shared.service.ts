@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { NgxUiLoaderConfig, NgxUiLoaderService } from 'ngx-ui-loader';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -10,7 +11,9 @@ export class SharedService {
   loading: boolean = false;
   baseURL = environment.API_URL;
   tokenObj: any;
-  constructor() {
+  config: NgxUiLoaderConfig;
+  constructor(private ngxUiLoaderService: NgxUiLoaderService) {
+    this.config = this.ngxUiLoaderService.getDefaultConfig();
   }
 
   error(message: string) {

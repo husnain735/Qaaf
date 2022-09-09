@@ -1,206 +1,218 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
-@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
-@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import "~bootstrap/scss/bootstrap";
+@import "~ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
+@import "~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
 @import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css");
-
 
 $primary_font_en: "Uni Neue";
 .cursor {
-    cursor: pointer !important;
+  cursor: pointer !important;
 }
-.bg-gray{
-    background-color: #e9e9e9;
+.bg-gray {
+  background-color: #e9e9e9;
 }
-.font-10{
-    font-size: 10px;
+.font-10 {
+  font-size: 10px;
 }
-.font-11{
-    font-size: 11px;
+.font-11 {
+  font-size: 11px;
 }
-.font-12{
-    font-size: 12px;
+.font-12 {
+  font-size: 12px;
 }
-.font-13{
-    font-size: 13px;
+.font-13 {
+  font-size: 13px;
 }
-.font-14{
-    font-size: 14px;
+.font-14 {
+  font-size: 14px;
 }
-.font-15{
-    font-size: 15px;
+.font-15 {
+  font-size: 15px;
 }
-.font-16{
-    font-size: 16px;
+.font-16 {
+  font-size: 16px;
 }
-.font-17{
-    font-size: 17px;
+.font-17 {
+  font-size: 17px;
 }
-.font-18{
-    font-size: 18px;
+.font-18 {
+  font-size: 18px;
 }
-.font-19{
-    font-size: 19px;
+.font-19 {
+  font-size: 19px;
 }
-.font-20{
-    font-size: 20px;
+.font-20 {
+  font-size: 20px;
 }
-.font-21{
-    font-size: 22px;
+.font-21 {
+  font-size: 22px;
 }
-.font-22{
-    font-size: 22px;
+.font-22 {
+  font-size: 22px;
 }
-.font-23{
-    font-size: 23px;
+.font-23 {
+  font-size: 23px;
 }
-.font-24{
-    font-size: 24px;
+.font-24 {
+  font-size: 24px;
 }
-.font-25{
-    font-size: 25px;
+.font-25 {
+  font-size: 25px;
 }
-.font-26{
-    font-size: 26px;
+.font-26 {
+  font-size: 26px;
 }
-.font-27{
-    font-size: 27px;
+.font-27 {
+  font-size: 27px;
 }
-.font-28{
-    font-size: 28px;
+.font-28 {
+  font-size: 28px;
 }
-.font-29{
-    font-size: 29px;
+.font-29 {
+  font-size: 29px;
 }
-.font-30{
-    font-size: 30px;
+.font-30 {
+  font-size: 30px;
 }
-.font-w-100{
-    font-weight: 100;
+.font-w-100 {
+  font-weight: 100;
 }
-.font-w-200{
-    font-weight: 200;
+.font-w-200 {
+  font-weight: 200;
 }
-.font-w-300{
-    font-weight: 300;
+.font-w-300 {
+  font-weight: 300;
 }
-.font-w-400{
-    font-weight: 400;
+.font-w-400 {
+  font-weight: 400;
 }
-.font-w-500{
-    font-weight: 500;
+.font-w-500 {
+  font-weight: 500;
 }
-.font-w-600{
-    font-weight: 600;
+.font-w-600 {
+  font-weight: 600;
 }
-.font-w-700{
-    font-weight: 700;
+.font-w-700 {
+  font-weight: 700;
 }
-.font-w-800{
-    font-weight: 800 ;
+.font-w-800 {
+  font-weight: 800;
 }
-.font-w-900{
-    font-weight: 900;
+.font-w-900 {
+  font-weight: 900;
 }
-.font-w-bold{
-    font-weight: bold;
+.font-w-bold {
+  font-weight: bold;
 }
-.font-w-bolder{
-    font-weight: bolder;
+.font-w-bolder {
+  font-weight: bolder;
 }
-.font-w-lighter{
-    font-weight: lighter;
+.font-w-lighter {
+  font-weight: lighter;
 }
-.error{
-    color: #dc3545;
+.error {
+  color: #dc3545;
 }
 .right-lan .rr {
-    flex-direction: row-reverse;
-
+  flex-direction: row-reverse;
 }
-.right-lan .rtl-rr{
-    direction: rtl;
-}
-
-.direction-rtl{
-    direction: rtl;
+.right-lan .rtl-rr {
+  direction: rtl;
 }
 
-.direction-ltr{
-    direction: ltr;
+.direction-rtl {
+  direction: rtl;
+}
+
+.direction-ltr {
+  direction: ltr;
 }
 button:focus {
-    outline:  0px !important;
-    outline: -webkit-focus-ring-color auto 0px !important;
+  outline: 0px !important;
+  outline: -webkit-focus-ring-color auto 0px !important;
 }
 .list-group-horizontal {
-    flex-direction: row;
+  flex-direction: row;
 }
-.font-family-en{
-    font-family: $primary_font_en;
+.font-family-en {
+  font-family: $primary_font_en;
 }
-.primary-color{
-    color: #244870;
+.primary-color {
+  color: #244870;
 }
-.secondary-color{
-    color: #ed3237;
+.secondary-color {
+  color: #ed3237;
 }
-.primary-bg-color{
-    background-color: #244870;
+.primary-bg-color {
+  background-color: #244870;
 }
-.secondary-bg-color{
-    background-color: #ed3237;
+.secondary-bg-color {
+  background-color: #ed3237;
 }
 .ts {
-    display: inline-flex;
+  display: inline-flex;
 }
 .ts::after {
-    fill: red;
-    content: " ";
-    width: 20px;
-    height: 20px;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
+  fill: red;
+  content: " ";
+  width: 20px;
+  height: 20px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
 }
-.bb-secondary{
-    border-bottom: 5px solid rgb(231, 66, 66);
+.bb-secondary {
+  border-bottom: 5px solid rgb(231, 66, 66);
 }
-.bb-secondary-8px{
-    border-bottom: 10px solid rgb(231, 66, 66);
+.bb-secondary-8px {
+  border-bottom: 10px solid rgb(231, 66, 66);
 }
-.black{
-    color: black;
+.black {
+  color: black;
 }
-.btn-main-primary{
-    border: unset;
-    background-color: #244870;
-    padding: 4px 6px;
-    border-radius: 5px;
-    color: white;
+.btn-main-primary {
+  border: unset;
+  background-color: #244870;
+  padding: 4px 6px;
+  border-radius: 5px;
+  color: white;
 }
-.p-relative{
-    position: relative;
+.p-relative {
+  position: relative;
 }
-.b-shadow{
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+.b-shadow {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-.b-zero{
-    border: unset;
+.b-zero {
+  border: unset;
 }
-.pt-100{
-    padding-top: 100%;
+.pt-100 {
+  padding-top: 150%;
 }
-.c-border{
+.c-border {
   border: 1px solid #f5f5f5;
 }
+.body-relative {
+  position: relative;
+  min-height: 100vh;
+}
+.card-img{
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 0;
+}
 // ngx owl carousel
-
 
 // owl-carousel-o {
 //     position: absolute;
@@ -209,7 +221,7 @@ button:focus {
 //     top: 13%;
 //     left: 0;
 //   }
-  
+
 //   .owl-item {
 //     height: 100vh;
 //     width: 100%;
@@ -217,51 +229,50 @@ button:focus {
 //     background-size: cover;
 //     background-position: 50% 50%;
 //   }
-  
-  
-  /* img {
+
+/* img {
     width: 100%;
     height: auto;
     max-width: 99vh;
   } */
-  
-  /* Feel free to change duration  */ 
-  .animated  {
-    -webkit-animation-duration : 1000 ms  ;
-    animation-duration : 1000 ms  ;
-    -webkit-animation-fill-mode : both  ;
-    animation-fill-mode : both  ;
-  }  
-  /* .owl-animated-out - only for current item */ 
-  /* This is very important class. Use z-index if you want move Out item above In item */ 
-  .owl-animated-out {
-    z-index : 1 
-     }
-  /* .owl-animated-in - only for upcoming item
-  /* This is very important class. Use z-index if you want move In item above Out item */ 
-  .owl-animated-in {
-    z-index : 0 
-     }
-  /* .fadeOut is style taken from Animation.css and this is how it looks in owl.carousel.css:  */ 
-  .fadeOut  {
-    -webkit-animation-name : fadeOut  ;
-    animation-name : fadeOut  ;
-  }  
-  @-webkit-keyframes  fadeOut  {
-    0% {
-      opacity : 1   ;
-    }  
-    100% {
-      opacity : 0   ;
-    }  
-  }
-  @keyframes  fadeOut  {
-    0% {
-      opacity : 1   ;
-    }  
-    100% {
-      opacity : 0   ;
-    }  
-  }
 
-//end 
+/* Feel free to change duration  */
+.animated {
+  -webkit-animation-duration: 1000 ms;
+  animation-duration: 1000 ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+/* .owl-animated-out - only for current item */
+/* This is very important class. Use z-index if you want move Out item above In item */
+.owl-animated-out {
+  z-index: 1;
+}
+/* .owl-animated-in - only for upcoming item
+  /* This is very important class. Use z-index if you want move In item above Out item */
+.owl-animated-in {
+  z-index: 0;
+}
+/* .fadeOut is style taken from Animation.css and this is how it looks in owl.carousel.css:  */
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+//end
