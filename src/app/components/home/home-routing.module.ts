@@ -7,6 +7,7 @@ import { NewArrivalComponent } from './new-arrival/new-arrival.component';
 import { SaleComponent } from './sale/sale.component';
 import { StitchedComponent } from './stitched/stitched.component';
 import { UnstitchedComponent } from './unstitched/unstitched.component';
+import { ViewItemComponent } from './view-item/view-item.component';
 import { WomensComponent } from './womens/womens.component';
 
 const routes: Routes = [
@@ -45,6 +46,10 @@ const routes: Routes = [
         {
           path:'unstitched',
           component: UnstitchedComponent,
+        },
+        {
+          path:'view-item',
+          component: ViewItemComponent,
         },
     ]
   }

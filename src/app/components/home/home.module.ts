@@ -12,6 +12,7 @@ import { WomensComponent } from './womens/womens.component';
 import { GirlsComponent } from './girls/girls.component';
 import { StitchedComponent } from './stitched/stitched.component';
 import { UnstitchedComponent } from './unstitched/unstitched.component';
+import { ViewItemComponent } from './view-item/view-item.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { UnstitchedComponent } from './unstitched/unstitched.component';
     WomensComponent,
     GirlsComponent,
     StitchedComponent,
-    UnstitchedComponent
+    UnstitchedComponent,
+    ViewItemComponent
   ],
   imports: [
     CommonModule,
