@@ -3,15 +3,16 @@
       <ng-container *ngFor="let item of ItemModel.Items">
          <ng-container *ngFor="let itemPictures of ItemModel.ItemPictures | filter : item.ItemId : 'ItemId' | filter : 1 : 'IsPrimary'">
           <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
-            <div class="card b-shadow c-border">
+            <div class="card b-shadow c-border cursor">
               <div class="card-header b-zero p-0">
                 <div class="p-relative pt-100">
                   <img class="card-img" [src]="api_url + itemPictures.ImageURL" alt="Card image cap">
                 </div>
               </div>
               <div class="card-body">
-                <h5 class="card-title font-15">BLENCOT Womens Casual</h5>
-                <p class="card-text font-14">$48.98</p>
+                <h5 class="card-title font-15">{{item.Title}}</h5>
+              <p class="card-text font-14 secondary-color font-w-bold">Rs.{{item.DiscountedPrice != undefined ? item.DiscountedPrice : item.Price}}
+                <span *ngIf="item.DiscountedPrice != undefined" class="line-through gray">Rs.{{item.Price}}</span></p>
               </div>
             </div>
           </div>

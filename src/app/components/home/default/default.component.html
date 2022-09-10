@@ -1,1 +1,6 @@
 <router-outlet></router-outlet>
+<div class="row rr justify-content-center" [ngClass]="_sharedService.language == 'en' ? 'whatsapp-right' : 'whatsapp-left'">
+    <a class="" href="https://wa.me/{{+923070940145}}" target="_blank">
+        <span class=""> <i class="ts whatsapp"></i></span>
+    </a>
+</div>
