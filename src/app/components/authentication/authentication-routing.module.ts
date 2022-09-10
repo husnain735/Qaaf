@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SignInGuard } from 'src/app/guards/signin.guard';
 import { AdminSignInComponent } from './admin-sign-in/admin-sign-in.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 
@@ -11,7 +12,7 @@ const routes: Routes = [
       {
         path: 'admin-sign-in',
         component: AdminSignInComponent,
-        //canActivate: [PublicGuard]
+        canActivate: [SignInGuard]
       },
     ]
   }

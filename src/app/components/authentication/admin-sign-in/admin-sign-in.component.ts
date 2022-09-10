@@ -22,7 +22,7 @@ export class AdminSignInComponent implements OnInit {
 
   ngOnInit(): void {
     this.userObj = new Object();
-    //this.modalService.open(this.content, { ariaLabelledBy: 'modal-basic-title', centered: false ,backdrop: 'static'});
+    this.modalService.open(this.content, { ariaLabelledBy: 'modal-basic-title', centered: false ,backdrop: 'static'});
   }
   checkCode(){
     if (this.ProCode == this.ValidCode) {
