@@ -23,9 +23,10 @@ export class ViewItemComponent implements OnInit {
   IsHomePage: boolean = false;
   ItemModel: ItemViewModel;
   api_url = environment.API_URL;
-  zoomImage: string = '../../../../assets/images/png/WhatsApp Image 2022-09-01 at 1.57.37 PM (3) - Copy - Copy.jpeg';
+  zoomImage: string;
 
   ngOnInit(): void {
+    this.ItemModel = new ItemViewModel();
     this.route.queryParams.forEach((params: any) => {
       this.ItemId = params.queryParam;
       console.log(this.ItemId);
@@ -39,18 +40,20 @@ export class ViewItemComponent implements OnInit {
   GetAllItems(){
     this._itemService.GetAllItems(this.IsSale,this.IsGender,this.IsStitch,this.IsPrimary,this.ItemId,this.IsHomePage).subscribe((res: any) => {
       this.ItemModel = res;
+      this.zoomImage = this.ItemModel.ItemPictures[0].ImageURL;
     }, error => {
 
     })
   }
   zoomIn(event) {
+    debugger
     var element = document.getElementById("overlay");
     element.style.display = "inline-block";
-    element.style.backgroundImage = "url('" + this.zoomImage + "')";
+    element.style.backgroundImage = "url('" + this.api_url +  this.zoomImage + "')";
     var img = document.getElementById("imgZoom");
     var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
     var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
-    element.style.backgroundPosition = (-posX * 4) + "px " + (-posY * 4) + "px";
+    element.style.backgroundPosition = (-posX * 2) + "px " + (-posY * 2) + "px";
   
   }
   

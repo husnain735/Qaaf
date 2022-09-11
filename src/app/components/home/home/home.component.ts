@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   apiData: any[];
   customOptions: OwlOptions = {
     loop: true,
-    autoplay: true,
+    autoplay: false,
     center: true,
     dots: true,
     autoHeight: true,
@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
     this.ItemModel = new ItemViewModel();
     this.apiData = [
       {
-        url: '../../../assets/images/jpg/carousel 1.jpg',
+        url: '../../../assets/images/jpg/Screen Background.jpg',
         id: '1',
       },
       {
@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit {
         id: '2',
       },
       {
-        url: '../../../assets/images/jpg/carousel 3.jpg',
+        url: '../../../assets/images/jpg/Screen Background.jpg',
         id: '3',
       },
     ];
