@@ -258,6 +258,8 @@ export class AddItemComponent implements OnInit {
                 error => {
                   //this._sharedService.error(error.Message)
                 });
+
+            
           }
 
         }, (error) => {
@@ -321,4 +323,5 @@ export class AddItemComponent implements OnInit {
     })
 
   }
+  
 }

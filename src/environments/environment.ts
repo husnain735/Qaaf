@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  API_URL: 'https://localhost:44321/',
+   API_URL: 'https://localhost:44321/',
+  //API_URL: 'http://qaafapi.qaafcollection.com/',
+  //API_URL: 'http://localqaafapi/',
   adminCode: '192.168.10.1',
   production: false
 };

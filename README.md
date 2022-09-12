@@ -31,4 +31,3 @@ npm i rxjs@6.4.0 --force --save
 npm i rxjs-compat@6.6.7 --force --save
 npm i ng2-image-compress@7.0.7 --force --save
 npm i ngx-ui-loader --force
-

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { SharedService } from 'src/app/services/shared.service';
 export class NavbarComponent implements OnInit {
   tab: any = 'tab1';
   
-  constructor(public _sharedService: SharedService) { }
+  constructor(public _sharedService: SharedService,private _router: Router) { }
   
   ngOnInit(): void {
   }
@@ -28,5 +29,13 @@ export class NavbarComponent implements OnInit {
         }else if (check === 6){
           this.tab = 'tab3';
         }
+    }
+    signin(){
+      var token = JSON.parse(localStorage.getItem('user'));
+      if (token != undefined) {
+        this._router.navigate(['/admin/']);
+      }else {
+        this._router.navigate(['/auth/admin-sign-in']);
+      }
     }
 }

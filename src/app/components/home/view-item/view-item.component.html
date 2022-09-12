@@ -2,13 +2,14 @@
     <div class="row mx-0">
         <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="row mx-0">
-                <div class="col-6" style="overflow-y: scroll;height: 400px;">
+                <div class="col-4 overflow-images" style="overflow-y: scroll;height: 400px;">
                     <div class="row mx-0 mb-2" *ngFor="let itemPictures of ItemModel.ItemPictures">
-                        <img class="card-img-size" [src]="api_url + itemPictures.ImageURL" alt="Card image cap">
+                        <img class="card-img-size cursor" (click)="zoomImage = itemPictures.ImageURL" 
+                             [src]="api_url + itemPictures.ImageURL" alt="Card image cap">
                     </div>
                 </div>
-                <div class="col-6">
-                    <img *ngIf="zoomImage != undefined" id="imgZoom" width="200px" height="200px" (mousemove)="zoomIn($event)" 
+                <div class="col-8 p-relative">
+                    <img *ngIf="zoomImage != undefined" id="imgZoom" width="300px" height="400px" (mousemove)="zoomIn($event)" 
                     (mouseout)="zoomOut()" [src]="api_url + zoomImage">
                     <div id="overlay"></div>
                 </div>

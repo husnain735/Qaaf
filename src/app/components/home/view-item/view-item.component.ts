@@ -46,14 +46,13 @@ export class ViewItemComponent implements OnInit {
     })
   }
   zoomIn(event) {
-    debugger
     var element = document.getElementById("overlay");
     element.style.display = "inline-block";
     element.style.backgroundImage = "url('" + this.api_url +  this.zoomImage + "')";
     var img = document.getElementById("imgZoom");
     var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
     var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
-    element.style.backgroundPosition = (-posX * 2) + "px " + (-posY * 2) + "px";
+    element.style.backgroundPosition = (-posX * 0.5) + "px " + (-posY * 1) + "px";
   
   }
   
