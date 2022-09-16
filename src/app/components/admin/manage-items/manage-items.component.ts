@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from 'src/app/services/admin.service';
+import { ItemViewModel } from 'src/app/shared/models/ViewModels/ItemViewModel';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-manage-items',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageItemsComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private adminService:AdminService) { }
+  ItemId: number;
+  PageNo = 1;
+  ItemModel: ItemViewModel;
+  api_url = environment.API_URL;
   ngOnInit(): void {
+    this.ItemModel = new ItemViewModel();
+    this.GetItem();
   }
+  GetItem(){
+    this.adminService.getItem(this.ItemId,this.PageNo).subscribe((res: any) => {
+      this.ItemModel = res;
+    }, error => {
 
+    })
+  }
 }

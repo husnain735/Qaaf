@@ -13,7 +13,7 @@
   </owl-carousel-o>
 </div>
 <div>
-  <div class="row mx-0">
+  <div *ngIf="ItemModel.New != undefined && ItemModel.New.length > 0" class="row mx-0">
     <div class="col-12 text-center">
       <div class="qaaf-box display-inline"><h5>QAAF</h5></div>
       <div class="new-box display-inline"><h5>NEW PRODUCTS</h5></div>
@@ -62,7 +62,7 @@
     </div>
   </div>
 
-  <div class="row mx-0 mt-5">
+  <div *ngIf="ItemModel.Sale != undefined && ItemModel.Sale.length > 0" class="row mx-0 mt-5">
     <div class="col-12 text-center">
       <div class="qaaf-box display-inline"><h5>QAAF</h5></div>
       <div class="new-box display-inline"><h5>SALE PRODUCTS</h5></div>
@@ -111,7 +111,7 @@
     </div>
   </div>
 
-  <div class="row mx-0 mt-5">
+  <div *ngIf="ItemModel.UnStitched != undefined && ItemModel.UnStitched.length > 0" class="row mx-0 mt-5">
     <div class="col-12 text-center">
       <div class="qaaf-box display-inline"><h5>QAAF</h5></div>
       <div class="new-box display-inline"><h5>UNSTITCHED</h5></div>

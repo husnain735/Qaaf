@@ -11,5 +11,7 @@ export class AdminService {
   saveItem(itemObj: any){
     return this._customHttpService.post(this.defaultUrl + 'SaveItem', itemObj);
   }
-
+  getItem(ItemId: any,PageNo: any){
+    return this._customHttpService.get(this.defaultUrl + 'GetItem', {ItemId: ItemId,PageNo:PageNo});
+  }
 }

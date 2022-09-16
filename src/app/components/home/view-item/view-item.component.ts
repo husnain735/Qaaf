@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Gallery, GalleryItem, ImageItem, ImageSize, ThumbnailsPosition } from 'ng-gallery';
+import { Lightbox } from 'ng-gallery/lightbox';
 import { ItemService } from 'src/app/services/item.service';
 import { SharedService } from 'src/app/services/shared.service';
+import { ItemPicture } from 'src/app/shared/models/itempicture';
 import { ItemViewModel } from 'src/app/shared/models/ViewModels/ItemViewModel';
 import { environment } from 'src/environments/environment';
 
@@ -14,7 +17,9 @@ export class ViewItemComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     public _sharedService: SharedService,
-    private _itemService: ItemService) { }
+    private _itemService: ItemService,
+    public gallery: Gallery, 
+    public lightbox: Lightbox) { }
   IsSale: boolean = undefined;
   IsGender: number = undefined;
   IsStitch: number = undefined;
@@ -24,7 +29,10 @@ export class ViewItemComponent implements OnInit {
   ItemModel: ItemViewModel;
   api_url = environment.API_URL;
   zoomImage: string;
-
+  items: GalleryItem[];
+  filtered:  Array<ItemPicture>;
+  myThumbnail = 'https://wittlock.github.io/ngx-image-zoom/assets/thumb.jpg';
+  myFullresImage = 'https://wittlock.github.io/ngx-image-zoom/assets/thumb.jpg';
   ngOnInit(): void {
     this.ItemModel = new ItemViewModel();
     this.route.queryParams.forEach((params: any) => {
@@ -33,7 +41,7 @@ export class ViewItemComponent implements OnInit {
     });
     if (this.ItemId != undefined) {
       this.GetAllItems();
-      this.zoomOut();
+      // this.zoomOut();
     }
     
   }
@@ -59,5 +67,27 @@ export class ViewItemComponent implements OnInit {
   zoomOut() {
     var element = document.getElementById("overlay");
     element.style.display = "none";
+  }
+
+  imageSection($event, id: number) {
+    // this.filtered = this.ItemModel.ItemPictures.filter(student => student.ItemPictureId === id);
+    // console.log(this.filtered);
+    // this._sharedService.imageModalService.openImage($event, this.filtered, this.filtered[0].imagesId, this.filtered[0].imageTitle);
+    this.items = this.ItemModel.ItemPictures.map(item => new ImageItem({ src:  this.api_url + item.ImageURL, thumb: this.api_url + item.ImageURL }));
+
+
+    /** Lightbox Example */
+
+    // Get a lightbox gallery ref
+    const lightboxRef = this.gallery.ref('lightbox');
+
+    // Add custom gallery config to the lightbox (optional)
+    lightboxRef.setConfig({
+      imageSize: ImageSize.Contain,
+      thumbPosition: ThumbnailsPosition.Bottom
+    });
+
+    // Load items into the lightbox gallery ref
+    lightboxRef.load(this.items);
   }
 }

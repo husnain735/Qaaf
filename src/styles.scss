@@ -276,3 +276,60 @@ button:focus {
 }
 
 //end
+
+.ngx-pagination .current {
+  font-family: sans-serif !important;
+  background: #244870 !important;
+  border-radius: 100%;
+  align-self: baseline;
+  padding: 0px 11px !important;
+}
+
+.pagination {
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+// .pagination-previous,
+// .pagination-next {
+//   display: none !important;
+// }
+.right-lan .ngx-pagination .pagination-next a::after,
+.ngx-pagination .pagination-next.disabled::after {
+  direction: rtl !important;
+  display: none !important;
+}
+
+.right-lan .ngx-pagination .pagination-previous a::before,
+.ngx-pagination .pagination-previous.disabled::before {
+  display: none !important;
+  direction: rtl !important;
+}
+
+.left-lan .ngx-pagination .pagination-next a::after,
+.ngx-pagination .pagination-next.disabled::after {
+  direction: ltr !important;
+  display: none !important;
+}
+
+.left-lan .ngx-pagination .pagination-previous a::before,
+.ngx-pagination .pagination-previous.disabled::before {
+  display: none !important;
+  direction: ltr !important;
+}
+
+.right-lan .pagination {
+  flex-direction: row-reverse;
+}
+
+.ngx-pagination {
+  margin: 1rem 0;
+  padding: 0;
+  display: flex;
+}
+
+.right-lan .ngx-pagination {
+  flex-direction: row-reverse;
+}

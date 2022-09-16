@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { BlockCopyPasteDirective } from '../directives/block-copy-paste.directive';
 import { FilterPipe } from '../pipes/filter.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [NavbarComponent,FooterComponent,BlockCopyPasteDirective,FilterPipe],
@@ -15,10 +16,11 @@ import { FilterPipe } from '../pipes/filter.pipe';
     CommonModule,
     SharedRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule,
   ],
   exports:[
-    NavbarComponent,FooterComponent,NgbModule,HttpClientModule,BlockCopyPasteDirective,FilterPipe
+    NavbarComponent,FooterComponent,NgbModule,HttpClientModule,BlockCopyPasteDirective,FilterPipe,NgxPaginationModule
   ]
 })
 export class SharedModule { }

@@ -7,10 +7,33 @@
     transform: scale(1.1);
 }
 .card-img-size{
-  width: 200px;
-  height: 200px;
+  // width: 200px;
+  // height: 200px;
+  object-fit: contain;
 }
 
 .overflow-images::-webkit-scrollbar {
   width: 12px;
+}
+
+::ng-deep .fullscreen lightbox {
+  border-radius: 0;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  max-height: unset;
+  max-width: unset;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 999999 !important;
+}
+lightbox gallery {
+  display: block;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  width: 100%;
+  /* z-index: 99999999999; */
 }

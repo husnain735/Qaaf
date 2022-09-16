@@ -11,6 +11,7 @@ export class ItemViewModel {
     SalePictures: Array<ItemPicture>;
     UnStitched: Array<Item>;
     UnStitchedPictures: Array<ItemPicture>;
+    TotalItems: number;
     constructor() {
         this.Item = new Item();
         this.ItemPictures = new Array<ItemPicture>();

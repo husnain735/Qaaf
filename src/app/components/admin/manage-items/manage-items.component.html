@@ -11,67 +11,39 @@
       </div>
     </div>
   </div>
-  <!-- Waqar Code -->
   <div class="row mx-0 mt-3">
-    <div class="col-12 mb-2 zoom">
-      <div class="card p-2 shadow-sm b-none">
-        <div class="card-body p-0 row mx-0">
-          <div class="col-10 p-0 d-flex">
-            <img
-              class="card-img-top list-card-icon"
-              src="../../../../assets/images/png/HTML image.png"
-            />
-            <div class="ml-2">
-              <h5 class="card-title mb-0">Item Detail</h5>
-              <p class="text-style mb-0">2000</p>
+    <ng-container *ngFor="let item of ItemModel.Items |  paginate: { itemsPerPage: 8, totalItems:ItemModel.TotalItems , currentPage: PageNo }; let idx = index">
+      <ng-container
+        *ngFor="
+          let itemPictures of ItemModel.ItemPictures
+            | filter: item.ItemId:'ItemId'
+            | filter: 1:'IsPrimary'
+        "
+      >
+        <div class="col-12 mb-2 zoom">
+          <div class="card p-2 shadow-sm b-none">
+            <div class="card-body p-0 row mx-0">
+              <div class="col-10 p-0 d-flex">
+                <img
+                  class="card-img-top list-card-icon"
+                  [src]="api_url + itemPictures.ImageURL"
+                />
+                <div class="ml-2">
+                  <h5 class="card-title mb-0">{{item.Title}}</h5>
+                  <!-- <p class="text-style mb-0">2000</p> -->
+                </div>
+              </div>
+              <div class="col-2 p-0 d-flex justify-content-end">
+                <i class="fas fa-edit mr-2"></i> <br />
+                <i class="fas fa-trash mr-2"></i>
+              </div>
             </div>
           </div>
-          <div class="col-2 p-0 d-flex justify-content-end">
-            <i class="fas fa-edit mr-2"></i> <br />
-            <i class="fas fa-trash mr-2"></i>
-          </div>
         </div>
-      </div>
-    </div>
-    <div class="col-12 mb-2 zoom">
-      <div class="card p-2 shadow-sm b-none">
-        <div class="card-body p-0 row mx-0">
-          <div class="col-10 p-0 d-flex">
-            <img
-              class="card-img-top list-card-icon"
-              src="../../../../assets/images/png/HTML image.png"
-            />
-            <div class="ml-2">
-              <h5 class="card-title mb-0">Item Detail</h5>
-              <p class="text-style mb-0">2000</p>
-            </div>
-          </div>
-          <div class="col-2 p-0 d-flex justify-content-end">
-            <i class="fas fa-edit mr-2"></i> <br />
-            <i class="fas fa-trash mr-2"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 mb-2 zoom">
-      <div class="card p-2 shadow-sm b-none">
-        <div class="card-body p-0 row mx-0">
-          <div class="col-10 p-0 d-flex">
-            <img
-              class="card-img-top list-card-icon"
-              src="../../../../assets/images/png/HTML image.png"
-            />
-            <div class="ml-2">
-              <h5 class="card-title mb-0">Item Detail</h5>
-              <p class="text-style mb-0">2000</p>
-            </div>
-          </div>
-          <div class="col-2 p-0 d-flex justify-content-end">
-            <i class="fas fa-edit mr-2"></i> <br />
-            <i class="fas fa-trash mr-2"></i>
-          </div>
-        </div>
-      </div>
-    </div>
+      </ng-container>
+    </ng-container>
   </div>
+  <pagination-controls *ngIf="ItemModel.TotalItems > 8 " class="pagination" style="cursor: pointer;" 
+    (pageChange)="PageNo = $event;GetItem()">
+  </pagination-controls>
 </div>
