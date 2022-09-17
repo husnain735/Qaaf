@@ -33,6 +33,10 @@ const routes: Routes = [
       {
         path:'add-item',
         component: AddItemComponent,
+      },
+      {
+        path:'edit-item',
+        component: AddItemComponent,
       }
     ]
   }

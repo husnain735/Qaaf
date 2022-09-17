@@ -333,3 +333,17 @@ button:focus {
 .right-lan .ngx-pagination {
   flex-direction: row-reverse;
 }
+.btnCustom{
+  border: unset;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+.btnCancel{
+  background-color: #dc3545;
+  color: white;
+}
+.model-closeIcon{
+  position: absolute;
+  top: 5%;
+  right: 3%;
+}

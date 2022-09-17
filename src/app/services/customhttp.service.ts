@@ -29,7 +29,7 @@ export class CustomHttpService {
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': "Bearer " + localStorage.getItem("access_token"),
+        'Authorization': "bearer " + localStorage.getItem("access_token"),
       }),
       params: data
     };
@@ -217,8 +217,8 @@ export class CustomHttpService {
   }
 
   signout() {
-    localStorage.clear();
-    this._router.navigate(['/auth/admin-sign-in'])
+    // localStorage.clear();
+    // this._router.navigate(['/auth/admin-sign-in'])
   }
 }
 

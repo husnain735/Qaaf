@@ -14,4 +14,7 @@ export class AdminService {
   getItem(ItemId: any,PageNo: any,ProductCode: any){
     return this._customHttpService.get(this.defaultUrl + 'GetItem', {ItemId: ItemId,PageNo:PageNo,ProductCode:ProductCode});
   }
+  deleteItem(ItemId: any){
+    return this._customHttpService.get(this.defaultUrl + 'DeleteItem', {ItemId: ItemId});
+  }
 }

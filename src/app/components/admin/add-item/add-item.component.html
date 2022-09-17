@@ -20,9 +20,9 @@
         <div class="col-sm-12 col-md-12 col-lg-12 mb-4">
           <ng-container *ngIf="ItemViewModel.ItemPictures.length > 0">
             <div class="row mx-0 mb-3">
-              <ng-container *ngFor="let img of ItemViewModel.ItemPictures">
-                <div  class="col-sm-12 col-md-4 col-lg-3 cursor" (click)="primaryImage(img)">
-                  <div>
+              <ng-container *ngFor="let img of ItemViewModel.ItemPictures | filter: 0 :'IsDeleted'">
+                <div  class="col-sm-12 col-md-4 col-lg-3 cursor">
+                  <div (click)="primaryImage(img)">
                     <img
                       [ngClass]="img.IsPrimary == true ? 'isprimary' : ''"
                       [src]="_sharedService.baseURL + img.ImageURL"
@@ -369,7 +369,7 @@
             </div>
             <div class="text-center">
               <button class="btn-main-primary mr-1" (click)="checkCode()">
-                SaveItem
+               {{ItemViewModel.Item.ItemId == undefined ? 'Save' : 'Update'}} 
               </button>
             </div>
           </form>

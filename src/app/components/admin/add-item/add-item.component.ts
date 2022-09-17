@@ -6,6 +6,7 @@ import { ItemPicture } from 'src/app/shared/models/itempicture';
 import { CommonService } from 'src/app/services/common.service';
 import { SharedService } from 'src/app/services/shared.service';
 import { ItemViewModel } from 'src/app/shared/models/ViewModels/ItemViewModel';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-item',
@@ -14,7 +15,9 @@ import { ItemViewModel } from 'src/app/shared/models/ViewModels/ItemViewModel';
 })
 export class AddItemComponent implements OnInit {
 
-  constructor(private adminService:AdminService,private _commonService: CommonService, public _sharedService: SharedService) { }
+  constructor(private adminService:AdminService,private _commonService: CommonService, 
+    public _sharedService: SharedService,
+    private route: ActivatedRoute,private _route: Router) { }
   @ViewChild('imageUpload', { static: false }) imageUpload;
   @ViewChild('modelImageUpload', { static: false }) modelImageUpload;
   ItemViewModel: ItemViewModel;
@@ -28,6 +31,13 @@ export class AddItemComponent implements OnInit {
   openedAccidentImages : Array<ItemPicture>;
   ObjectTypeID: number = 11;
   ngOnInit(): void {
+    this.ItemViewModel = new ItemViewModel();
+    this.route.queryParams.forEach((params: any) => {
+      this.ItemViewModel.Item.ItemId = params.queryParam;
+    });
+    if (this.ItemViewModel.Item.ItemId != undefined) {
+      this.GetItem();
+    }
     this.colorCode = [
     {
       name: 'red',
@@ -155,7 +165,7 @@ export class AddItemComponent implements OnInit {
       isChecked: false
     }
   ]
-  this.ItemViewModel = new ItemViewModel();
+  
   }
   
   
@@ -293,22 +303,35 @@ export class AddItemComponent implements OnInit {
       }
     }
     this.adminService.saveItem(this.ItemViewModel).subscribe((res: any) => {
-      this.ItemViewModel = new ItemViewModel();
-      this.colorCode.forEach(a => a.isChecked = false);
-    }, error => {
-
-    })
-  }
-  removeImage(img){
-    this._commonService.removeImage(img.EncryptedName).subscribe((res: any) => {
-      var idx = this.ItemViewModel.ItemPictures.findIndex(a => a.EncryptedName == img.EncryptedName);
-      if (idx > -1) {
-        this.ItemViewModel.ItemPictures.splice(idx, 1);
+      if (this.ItemViewModel.Item.ItemId == undefined) {
+        this.ItemViewModel = new ItemViewModel();
+        this.colorCode.forEach(a => a.isChecked = false);
+      }else {
+        this._route.navigate(['/admin/manage-items'])
       }
       
     }, error => {
 
     })
+  }
+  removeImage(img){
+    if (this.ItemViewModel.Item.ItemId == undefined) {
+      this._commonService.removeImage(img.EncryptedName).subscribe((res: any) => {
+        var idx = this.ItemViewModel.ItemPictures.findIndex(a => a.EncryptedName == img.EncryptedName);
+        if (idx > -1) {
+          this.ItemViewModel.ItemPictures.splice(idx, 1);
+        }
+        
+      }, error => {
+  
+      });
+    }else {
+      var idx = this.ItemViewModel.ItemPictures.findIndex(i => i.ItemPictureId == img.ItemPictureId);
+      if (idx > -1) {
+        this.ItemViewModel.ItemPictures[idx].IsDeleted = true;
+      }
+    }
+    
   }
   primaryImage(img){
     debugger
@@ -323,5 +346,18 @@ export class AddItemComponent implements OnInit {
     })
 
   }
-  
+  GetItem(){
+    this.adminService.getItem(this.ItemViewModel.Item.ItemId,1,undefined).subscribe(
+      {
+        next: (c: any) => {
+          this.ItemViewModel = c;
+          this.checkedColorCode(this.ItemViewModel.Item.ColorCode);
+        },
+        error: c => {
+          
+        }
+        
+      }
+    )
+  }
 }
