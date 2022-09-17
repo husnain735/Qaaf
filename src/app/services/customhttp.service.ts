@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { SharedService } from './shared.service';
 import { environment } from 'src/environments/environment';
-import { Observable ,throwError } from 'rxjs';
+import { catchError, map, Observable ,throwError } from 'rxjs';
 import * as _ from 'lodash';
 
 @Injectable({
@@ -28,6 +25,7 @@ export class CustomHttpService {
     this._sharedService.loading = true;
 
   }
+  
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -36,25 +34,26 @@ export class CustomHttpService {
       params: data
     };
     return this._http.get(this.baseUrl + url, this.httpOptions)
-      .map((response: any) => {
+      .pipe(map((response: any) => {
+          this.pendingRequests--;
+          if (this.pendingRequests == 0) {
+            this._sharedService.loading = false;
+          }
+          return response;
+        }))
+      .pipe( catchError((e: HttpErrorResponse) => {
         this.pendingRequests--;
-        if (this.pendingRequests == 0) {
+          if (this.pendingRequests == 0) {
+          }
           this._sharedService.loading = false;
-        }
-        return response;
-      })
-      .catch(e => {
-        this.pendingRequests--;
-        if (this.pendingRequests == 0) {
-        }
-        this._sharedService.loading = false;
-        if (e.status === 401) {
-          this.pendingRequests=0;
-          this._sharedService.loading = false;
-          this.signout();
-        }
-        return throwError(e.error);
-      });
+          if (e.status === 401) {
+            this.pendingRequests=0;
+            this._sharedService.loading = false;
+            this.signout();
+          }
+          return throwError(e.error);
+      }));
+     
   }
 
   delete(url: string, data?: any): Observable<any[]> {
@@ -68,14 +67,14 @@ export class CustomHttpService {
       params: data
     };
     return this._http.delete(this.baseUrl + url, this.httpOptions)
-      .map((response: any) => {
+      .pipe(map((response: any) => {
         this.pendingRequests--;
         if (this.pendingRequests == 0) {
           this._sharedService.loading = false;
         }
         return response;
-      })
-      .catch(e => {
+      }))
+      .pipe(catchError(e => {
         this.pendingRequests--;
         this._sharedService.loading = false;
         if (this.pendingRequests == 0) {
@@ -86,7 +85,7 @@ export class CustomHttpService {
           this.signout();
         }
         return throwError(e.error);
-      });
+      }));
   }
 
   getWithoutHeader(url: string, data?: any): Observable<any[]> {
@@ -99,14 +98,14 @@ export class CustomHttpService {
       })
     };
     return this._http.get(this.baseUrl + url, this.httpOptions)
-      .map((response: any) => {
+      .pipe(map((response: any) => {
         this.pendingRequests--;
         if (this.pendingRequests == 0) {
           this._sharedService.loading = false;
         }
         return response;
-      })
-      .catch(e => {
+      }))
+      .pipe(catchError(e => {
         this.pendingRequests--;
         this._sharedService.loading = false;
         if (this.pendingRequests == 0) {
@@ -118,7 +117,7 @@ export class CustomHttpService {
           this.signout();
         }
         return throwError(e.error);
-      });
+      }));
   }
 
   postWithoutHeader(url: string, data: any): Observable<any[]> {
@@ -131,14 +130,14 @@ export class CustomHttpService {
       })
     };
     return this._http.post(this.baseUrl + url, data, this.httpOptions)
-      .map((response: any) => {
+      .pipe(map((response: any) => {
         this.pendingRequests--;
         if (this.pendingRequests == 0) {
           this._sharedService.loading = false;
         }
         return response;
-      })
-      .catch(e => {
+      }))
+      .pipe(catchError(e => {
         this.pendingRequests--;
         this._sharedService.loading = false;
         if (this.pendingRequests == 0) {
@@ -150,7 +149,7 @@ export class CustomHttpService {
         }
         // return Observable.throw(e);
         return throwError(e.error);
-      });
+      }));
   }
 
   post(url: string, data: any): Observable<any[]> {
@@ -164,14 +163,14 @@ export class CustomHttpService {
       })
     };
     return this._http.post(this.baseUrl + url, data, this.httpOptions)
-      .map((response: any) => {
+      .pipe(map((response: any) => {
         this.pendingRequests--;
         if (this.pendingRequests == 0) {
           this._sharedService.loading = false;
         }
         return response;
-      })
-      .catch(e => {
+      }))
+      .pipe(catchError(e => {
         this.pendingRequests--;
         this._sharedService.loading = false;
         if (this.pendingRequests == 0) {
@@ -182,7 +181,7 @@ export class CustomHttpService {
           this.signout();
         }
         return throwError(e.error);
-      });
+      }));
   }
 
 
@@ -196,14 +195,14 @@ export class CustomHttpService {
       })
     };
     return this._http.post(this.baseUrl + url, data, this.httpOptions)
-      .map((response: any) => {
+      .pipe(map((response: any) => {
         this.pendingRequests--;
         if (this.pendingRequests == 0) {
           this._sharedService.loading = false;
         }
         return response;
-      })
-      .catch(e => {
+      }))
+      .pipe(catchError(e => {
         this.pendingRequests--;
         this._sharedService.loading = false;
         if (this.pendingRequests == 0) {
@@ -214,7 +213,7 @@ export class CustomHttpService {
           this.signout();
         }
         return throwError(e.error);
-      });
+      }));
   }
 
   signout() {

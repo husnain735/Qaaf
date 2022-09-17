@@ -11,7 +11,6 @@ import { SimpleLayoutComponent } from './layouts/simple-layout/simple-layout.com
 import { NgxUiLoaderConfig, NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
 import { GalleryModule } from 'ng-gallery';
 import { LightboxModule } from 'ng-gallery/lightbox';
-import { NgxImageZoomModule} from 'ngx-image-zoom';
 
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -61,8 +60,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderRouterModule, // import this module for showing loader automatically when navigating between app routes
     NgxUiLoaderHttpModule,
     GalleryModule,
-    LightboxModule,
-    NgxImageZoomModule.forRoot()
+    LightboxModule
 
   ],
   providers: [],

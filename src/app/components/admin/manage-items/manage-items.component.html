@@ -12,6 +12,16 @@
     </div>
   </div>
   <div class="row mx-0 mt-3">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" [(ngModel)]="ProductCode" placeholder="Search by Product Code" 
+        aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-success" type="button" 
+        (click)="PageNo = 1;GetItem()">Search</button>
+      </div>
+    </div>
+  </div>
+  <div class="row mx-0 mt-3">
     <ng-container *ngFor="let item of ItemModel.Items |  paginate: { itemsPerPage: 8, totalItems:ItemModel.TotalItems , currentPage: PageNo }; let idx = index">
       <ng-container
         *ngFor="
@@ -30,7 +40,19 @@
                 />
                 <div class="ml-2">
                   <h5 class="card-title mb-0">{{item.Title}}</h5>
-                  <!-- <p class="text-style mb-0">2000</p> -->
+                  <p class="mb-0 card-text font-14 secondary-color font-w-bold">
+                    Rs.{{
+                      item.DiscountedPrice != undefined
+                        ? item.DiscountedPrice
+                        : item.Price
+                    }}
+                    <span
+                      *ngIf="item.DiscountedPrice != undefined"
+                      class="line-through gray"
+                      >Rs.{{ item.Price }}</span
+                    >
+                  </p>
+                  <p class="mb-0">{{item.ProductCode}}</p>
                 </div>
               </div>
               <div class="col-2 p-0 d-flex justify-content-end">

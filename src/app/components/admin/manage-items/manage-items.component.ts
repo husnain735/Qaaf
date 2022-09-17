@@ -14,13 +14,14 @@ export class ManageItemsComponent implements OnInit {
   ItemId: number;
   PageNo = 1;
   ItemModel: ItemViewModel;
+  ProductCode: string;
   api_url = environment.API_URL;
   ngOnInit(): void {
     this.ItemModel = new ItemViewModel();
     this.GetItem();
   }
   GetItem(){
-    this.adminService.getItem(this.ItemId,this.PageNo).subscribe((res: any) => {
+    this.adminService.getItem(this.ItemId,this.PageNo,this.ProductCode).subscribe((res: any) => {
       this.ItemModel = res;
     }, error => {
 

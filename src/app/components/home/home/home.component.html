@@ -13,161 +13,172 @@
   </owl-carousel-o>
 </div>
 <div>
-  <div *ngIf="ItemModel.New != undefined && ItemModel.New.length > 0" class="row mx-0">
-    <div class="col-12 text-center">
-      <div class="qaaf-box display-inline"><h5>QAAF</h5></div>
-      <div class="new-box display-inline"><h5>NEW PRODUCTS</h5></div>
-    </div> -->
+  <div
+    *ngIf="ItemModel.New != undefined && ItemModel.New.length > 0"
+    class="row mx-0"
+  >
     <div class="home-header">
       <h5 class="q-h5">QAAF</h5>
       <h5 class="new-h5">NEW PRODUCTS</h5>
     </div>
-  </div>
-  <div class="container-fluid mt-5">
-    <div class="row mx-0">
-      <ng-container *ngFor="let item of ItemModel.New">
-        <ng-container
-          *ngFor="
-            let itemPictures of ItemModel.NewPictures
-              | filter: item.ItemId:'ItemId'
-              | filter: 1:'IsPrimary'
-          "
-        >
-          <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
-            <div class="card b-shadow c-border cursor" [routerLink]="['/view-item']" [queryParams]="{queryParam: item.ItemId}">
-              <div class="card-header b-zero p-0">
-                <div class="p-relative pt-100">
-                  <img
-                    class="card-img"
-                    [src]="api_url + itemPictures.ImageURL"
-                    alt="Card image cap"
-                  />
+
+    <div class="container-fluid mt-5">
+      <div class="row mx-0">
+        <ng-container *ngFor="let item of ItemModel.New">
+          <ng-container
+            *ngFor="
+              let itemPictures of ItemModel.NewPictures
+                | filter: item.ItemId:'ItemId'
+                | filter: 1:'IsPrimary'
+            "
+          >
+            <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
+              <div
+                class="card b-shadow c-border cursor"
+                [routerLink]="['/view-item']"
+                [queryParams]="{ queryParam: item.ItemId }"
+              >
+                <div class="card-header b-zero p-0">
+                  <div class="p-relative pt-100">
+                    <img
+                      class="card-img"
+                      [src]="api_url + itemPictures.ImageURL"
+                      alt="Card image cap"
+                    />
+                  </div>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title font-15">{{ item.Title }}</h5>
+                  <p class="card-text font-14 secondary-color font-w-bold">
+                    Rs.{{
+                      item.DiscountedPrice != undefined
+                        ? item.DiscountedPrice
+                        : item.Price
+                    }}
+                    <span
+                      *ngIf="item.DiscountedPrice != undefined"
+                      class="line-through gray"
+                      >Rs.{{ item.Price }}</span
+                    >
+                  </p>
                 </div>
               </div>
-              <div class="card-body">
-                <h5 class="card-title font-15">{{ item.Title }}</h5>
-                <p class="card-text font-14 secondary-color font-w-bold">
-                  Rs.{{
-                    item.DiscountedPrice != undefined
-                      ? item.DiscountedPrice
-                      : item.Price
-                  }}
-                  <span
-                    *ngIf="item.DiscountedPrice != undefined"
-                    class="line-through gray"
-                    >Rs.{{ item.Price }}</span
-                  >
-                </p>
-              </div>
             </div>
-          </div>
+          </ng-container>
         </ng-container>
-      </ng-container>
+      </div>
     </div>
   </div>
 
-  <div *ngIf="ItemModel.Sale != undefined && ItemModel.Sale.length > 0" class="row mx-0 mt-5">
-    <div class="col-12 text-center">
-      <div class="qaaf-box display-inline"><h5>QAAF</h5></div>
-      <div class="new-box display-inline"><h5>SALE PRODUCTS</h5></div>
+  <div
+    *ngIf="ItemModel.Sale != undefined && ItemModel.Sale.length > 0"
+    class="row mx-0 mt-5"
+  >
+    <div class="home-header">
+      <h5 class="q-h5">QAAF</h5>
+      <h5 class="new-h5">SALE PRODUCTS</h5>
     </div>
-  </div> -->
-  <div class="home-header">
-    <h5 class="q-h5">QAAF</h5>
-    <h5 class="new-h5">SALE PRODUCTS</h5>
-  </div>
-  <div class="container-fluid mt-5">
-    <div class="row mx-0">
-      <ng-container *ngFor="let item of ItemModel.Sale">
-        <ng-container
-          *ngFor="
-            let itemPictures of ItemModel.SalePictures
-              | filter: item.ItemId:'ItemId'
-              | filter: 1:'IsPrimary'
-          "
-        >
-          <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
-            <div class="card b-shadow c-border cursor" [routerLink]="['/view-item']" [queryParams]="{queryParam: item.ItemId}">
-              <div class="card-header b-zero p-0">
-                <div class="p-relative pt-100">
-                  <img
-                    class="card-img"
-                    [src]="api_url + itemPictures.ImageURL"
-                    alt="Card image cap"
-                  />
+    <div class="container-fluid mt-5">
+      <div class="row mx-0">
+        <ng-container *ngFor="let item of ItemModel.Sale">
+          <ng-container
+            *ngFor="
+              let itemPictures of ItemModel.SalePictures
+                | filter: item.ItemId:'ItemId'
+                | filter: 1:'IsPrimary'
+            "
+          >
+            <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
+              <div
+                class="card b-shadow c-border cursor"
+                [routerLink]="['/view-item']"
+                [queryParams]="{ queryParam: item.ItemId }"
+              >
+                <div class="card-header b-zero p-0">
+                  <div class="p-relative pt-100">
+                    <img
+                      class="card-img"
+                      [src]="api_url + itemPictures.ImageURL"
+                      alt="Card image cap"
+                    />
+                  </div>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title font-15">{{ item.Title }}</h5>
+                  <p class="card-text font-14 secondary-color font-w-bold">
+                    Rs.{{
+                      item.DiscountedPrice != undefined
+                        ? item.DiscountedPrice
+                        : item.Price
+                    }}
+                    <span
+                      *ngIf="item.DiscountedPrice != undefined"
+                      class="line-through gray"
+                      >Rs.{{ item.Price }}</span
+                    >
+                  </p>
                 </div>
               </div>
-              <div class="card-body">
-                <h5 class="card-title font-15">{{ item.Title }}</h5>
-                <p class="card-text font-14 secondary-color font-w-bold">
-                  Rs.{{
-                    item.DiscountedPrice != undefined
-                      ? item.DiscountedPrice
-                      : item.Price
-                  }}
-                  <span
-                    *ngIf="item.DiscountedPrice != undefined"
-                    class="line-through gray"
-                    >Rs.{{ item.Price }}</span
-                  >
-                </p>
-              </div>
             </div>
-          </div>
+          </ng-container>
         </ng-container>
-      </ng-container>
+      </div>
     </div>
   </div>
 
-  <div *ngIf="ItemModel.UnStitched != undefined && ItemModel.UnStitched.length > 0" class="row mx-0 mt-5">
-    <div class="col-12 text-center">
-      <div class="qaaf-box display-inline"><h5>QAAF</h5></div>
-      <div class="new-box display-inline"><h5>UNSTITCHED</h5></div>
+  <div
+    *ngIf="ItemModel.UnStitched != undefined && ItemModel.UnStitched.length > 0"
+    class="row mx-0 mt-5"
+  >
+    <div class="home-header">
+      <h5 class="q-h5">QAAF</h5>
+      <h5 class="new-h5">UNSTITCHED</h5>
     </div>
-  </div> -->
-  <div class="home-header">
-    <h5 class="q-h5">QAAF</h5>
-    <h5 class="new-h5">UNSTITCHED</h5>
-  </div>
-  <div class="container-fluid mt-5 pb-5">
-    <div class="row mx-0 pb-5">
-      <ng-container *ngFor="let item of ItemModel.UnStitched">
-        <ng-container
-          *ngFor="
-            let itemPictures of ItemModel.UnStitchedPictures
-              | filter: item.ItemId:'ItemId'
-              | filter: 1:'IsPrimary'
-          "
-        >
-          <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
-            <div class="card b-shadow c-border cursor" [routerLink]="['/view-item']" [queryParams]="{queryParam: item.ItemId}">
-              <div class="card-header b-zero p-0">
-                <div class="p-relative pt-100">
-                  <img
-                    class="card-img"
-                    [src]="api_url + itemPictures.ImageURL"
-                    alt="Card image cap"
-                  />
+    <div class="container-fluid mt-5 pb-5">
+      <div class="row mx-0 pb-5">
+        <ng-container *ngFor="let item of ItemModel.UnStitched">
+          <ng-container
+            *ngFor="
+              let itemPictures of ItemModel.UnStitchedPictures
+                | filter: item.ItemId:'ItemId'
+                | filter: 1:'IsPrimary'
+            "
+          >
+            <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
+              <div
+                class="card b-shadow c-border cursor"
+                [routerLink]="['/view-item']"
+                [queryParams]="{ queryParam: item.ItemId }"
+              >
+                <div class="card-header b-zero p-0">
+                  <div class="p-relative pt-100">
+                    <img
+                      class="card-img"
+                      [src]="api_url + itemPictures.ImageURL"
+                      alt="Card image cap"
+                    />
+                  </div>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title font-15">{{ item.Title }}</h5>
+                  <p class="card-text font-14 secondary-color font-w-bold">
+                    Rs.{{
+                      item.DiscountedPrice != undefined
+                        ? item.DiscountedPrice
+                        : item.Price
+                    }}
+                    <span
+                      *ngIf="item.DiscountedPrice != undefined"
+                      class="line-through gray"
+                      >Rs.{{ item.Price }}</span
+                    >
+                  </p>
                 </div>
               </div>
-              <div class="card-body">
-                <h5 class="card-title font-15">{{ item.Title }}</h5>
-                <p class="card-text font-14 secondary-color font-w-bold">
-                  Rs.{{
-                    item.DiscountedPrice != undefined
-                      ? item.DiscountedPrice
-                      : item.Price
-                  }}
-                  <span
-                    *ngIf="item.DiscountedPrice != undefined"
-                    class="line-through gray"
-                    >Rs.{{ item.Price }}</span
-                  >
-                </p>
-              </div>
             </div>
-          </div>
+          </ng-container>
         </ng-container>
-      </ng-container>
+      </div>
     </div>
   </div>
+</div>

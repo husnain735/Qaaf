@@ -31,8 +31,6 @@ export class ViewItemComponent implements OnInit {
   zoomImage: string;
   items: GalleryItem[];
   filtered:  Array<ItemPicture>;
-  myThumbnail = 'https://wittlock.github.io/ngx-image-zoom/assets/thumb.jpg';
-  myFullresImage = 'https://wittlock.github.io/ngx-image-zoom/assets/thumb.jpg';
   ngOnInit(): void {
     this.ItemModel = new ItemViewModel();
     this.route.queryParams.forEach((params: any) => {
