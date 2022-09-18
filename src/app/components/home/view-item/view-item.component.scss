@@ -37,3 +37,13 @@ lightbox gallery {
   width: 100%;
   /* z-index: 99999999999; */
 }
+
+.card-primary-image-container{
+  height: 431px;
+  width: 50%;
+}
+.card-primary-image{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}

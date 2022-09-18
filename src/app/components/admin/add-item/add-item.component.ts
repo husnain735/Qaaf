@@ -240,6 +240,7 @@ export class AddItemComponent implements OnInit {
             // send compresed image base64 to api to save
             this._commonService.saveAllImage(this.compressedImages)
               .subscribe(res => {
+                debugger
                 if (res != undefined) {
                   if (this.ItemViewModel.ItemPictures == undefined) {
                     this.ItemViewModel.ItemPictures = new Array<ItemPicture>();
@@ -252,6 +253,7 @@ export class AddItemComponent implements OnInit {
                     this.imageObj.OriginalName = element.OriginalName;
                     this.imageObj.ObjectTypeID = ObjectTypeID;
                     this.imageObj.IsPrimary = false; 
+                    this.imageObj.IsDeleted = false;
                     this.ItemViewModel.ItemPictures.push(this.imageObj);
                     if(this.openedAccidentImages !=undefined)
                     this.openedAccidentImages.push(this.imageObj);

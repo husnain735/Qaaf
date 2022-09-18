@@ -46,7 +46,11 @@ export class ViewItemComponent implements OnInit {
   GetAllItems(){
     this._itemService.GetAllItems(this.IsSale,this.IsGender,this.IsStitch,this.IsPrimary,this.ItemId,this.IsHomePage).subscribe((res: any) => {
       this.ItemModel = res;
-      this.zoomImage = this.ItemModel.ItemPictures[0].ImageURL;
+      var idx = this.ItemModel.ItemPictures.findIndex(i => i.IsPrimary == true);
+      if (idx > -1) {
+        this.zoomImage = this.ItemModel.ItemPictures[idx].ImageURL;
+      }
+    
     }, error => {
 
     })

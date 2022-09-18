@@ -34,6 +34,7 @@
   id="web-header-2"
   class="z-index-2 pt-lg-2 shadow navbar navbar-expand-xl navbar-light zindex-fixed card-shadow bb-secondary-8px navbar-position"
   [ngClass]="_sharedService.language == 'en' ? 'right-lan' : 'left-lan'"
+  [class.topZero]="_router.url !== '/home' && _router.url !== '/'"
 >
   <div class="row mx-0 rr w-100">
     <div class="d-flex justify-content-between my-auto d-lg-none">
@@ -94,12 +95,13 @@
               ></li>
             </div>
             <p
-              id="aboutUs1"
+              id="home"
               [ngClass]="
                 _sharedService.language == 'en'
                   ? 'font-family-en font-14 '
                   : 'font-family-ar font-18 '
               "
+              [ngClass]="_router.url === '/home' || _router.url === '/' ? 'bb-secondary-2px' : ''"
               class="cursor nav-link mb-0 black text-center text-mb-white text-white text-lg-end height-md px-0 pt-0 m-0 pb-0"
             >
               HOME
@@ -128,12 +130,13 @@
               ></li>
             </div>
             <p
-              id="aboutUs1"
+              id="new-arrival"
               [ngClass]="
                 _sharedService.language == 'en'
                   ? 'font-family-en font-14 '
                   : 'font-family-ar font-18 '
               "
+              [ngClass]="_router.url === '/new-arrival' ? 'bb-secondary-2px' : ''"
               class="cursor nav-link mb-0 black text-center text-mb-white text-white text-lg-end height-md px-0 pt-0 m-0 pb-0"
             >
               NEW ARRIVAL
@@ -162,12 +165,13 @@
               ></li>
             </div>
             <p
-              id="aboutUs1"
+              id="sale"
               [ngClass]="
                 _sharedService.language == 'en'
                   ? 'font-family-en font-14 '
                   : 'font-family-ar font-18 '
               "
+              [ngClass]="_router.url === '/sale' ? 'bb-secondary-2px' : ''"
               class="cursor nav-link mb-0 black text-center text-mb-white text-white text-lg-end height-md px-0 pt-0 m-0 pb-0"
             >
               SALE
@@ -196,12 +200,13 @@
               ></li>
             </div>
             <p
-              id="aboutUs1"
+              id="womens"
               [ngClass]="
                 _sharedService.language == 'en'
                   ? 'font-family-en font-14 '
                   : 'font-family-ar font-18 '
               "
+              [ngClass]="_router.url === '/womens' ? 'bb-secondary-2px' : ''"
               class="cursor nav-link mb-0 black text-center text-mb-white text-white text-lg-end height-md px-0 pt-0 m-0 pb-0"
             >
               WOMENS
@@ -230,12 +235,13 @@
               ></li>
             </div>
             <p
-              id="aboutUs1"
+              id="girls"
               [ngClass]="
                 _sharedService.language == 'en'
                   ? 'font-family-en font-14 '
                   : 'font-family-ar font-18 '
               "
+              [ngClass]="_router.url === '/girls' ? 'bb-secondary-2px' : ''"
               class="cursor nav-link mb-0 black text-center text-mb-white text-white text-lg-end height-md px-0 pt-0 m-0 pb-0"
             >
               GIRLS
@@ -264,12 +270,13 @@
               ></li>
             </div>
             <p
-              id="aboutUs1"
+              id="stitched"
               [ngClass]="
                 _sharedService.language == 'en'
                   ? 'font-family-en font-14 '
                   : 'font-family-ar font-18 '
               "
+              [ngClass]="_router.url === '/stitched' ? 'bb-secondary-2px' : ''"
               class="cursor nav-link mb-0 black text-center text-mb-white text-white text-lg-end height-md px-0 pt-0 m-0 pb-0"
             >
               STITCHED
@@ -298,12 +305,13 @@
               ></li>
             </div>
             <p
-              id="aboutUs1"
+              id="unstitched"
               [ngClass]="
                 _sharedService.language == 'en'
                   ? 'font-family-en font-14 '
                   : 'font-family-ar font-18 '
               "
+              [ngClass]="_router.url === '/unstitched' ? 'bb-secondary-2px' : ''"
               class="cursor nav-link mb-0 black text-center text-mb-white text-white text-lg-end height-md px-0 pt-0 m-0 pb-0"
             >
               UNSTITCED
