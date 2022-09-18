@@ -92,7 +92,12 @@
   max-height: 100%;
   border-radius: 0;
 }
-
+@media only screen and (min-width: 992px){
+.col-lg-3-custom {
+    flex: 0 0 auto;
+    width: 23%;
+  }
+}
 @media only screen and (max-width: 600px) {
   ::ng-deep .owl-theme .owl-dots .owl-dot span {
     border-radius: 15px;

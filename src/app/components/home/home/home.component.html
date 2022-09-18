@@ -23,7 +23,7 @@
     </div>
 
     <div class="container-fluid my-5">
-      <div class="row mx-0">
+      <div class="row mx-0" [ngClass]="ItemModel.New != undefined && ItemModel.New.length >= 4 ? 'justify-content-center' : ''">
         <ng-container *ngFor="let item of ItemModel.New">
           <ng-container
             *ngFor="
@@ -32,7 +32,7 @@
                 | filter: 1:'IsPrimary'
             "
           >
-            <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
+            <div class="col-lg-3-custom col-md-4 col-sm-12 col-12 mb-4 px-4">
               <div
                 class="card b-shadow c-border cursor"
                 [routerLink]="['/view-item']"
@@ -79,7 +79,7 @@
       <h5 class="new-h5">SALE PRODUCTS</h5>
     </div>
     <div class="container-fluid mt-5">
-      <div class="row mx-0">
+      <div class="row mx-0" [ngClass]="ItemModel.Sale != undefined && ItemModel.Sale.length >= 4 ? 'justify-content-center' : ''">
         <ng-container *ngFor="let item of ItemModel.Sale">
           <ng-container
             *ngFor="
@@ -88,7 +88,7 @@
                 | filter: 1:'IsPrimary'
             "
           >
-            <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
+            <div class="col-lg-3-custom col-md-4 col-sm-12 col-12 mb-4 px-4">
               <div
                 class="card b-shadow c-border cursor"
                 [routerLink]="['/view-item']"
@@ -135,7 +135,7 @@
       <h5 class="new-h5">UNSTITCHED</h5>
     </div>
     <div class="container-fluid mt-5 pb-5">
-      <div class="row mx-0 pb-5">
+      <div class="row mx-0 pb-5" [ngClass]="ItemModel.UnStitched != undefined && ItemModel.UnStitched.length >= 4 ? 'justify-content-center' : ''">
         <ng-container *ngFor="let item of ItemModel.UnStitched">
           <ng-container
             *ngFor="
@@ -144,7 +144,7 @@
                 | filter: 1:'IsPrimary'
             "
           >
-            <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4 px-4">
+            <div class="col-lg-3-custom col-md-4 col-sm-12 col-12 mb-4 px-4">
               <div
                 class="card b-shadow c-border cursor"
                 [routerLink]="['/view-item']"
