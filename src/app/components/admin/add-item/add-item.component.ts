@@ -254,6 +254,7 @@ export class AddItemComponent implements OnInit {
                     this.imageObj.ObjectTypeID = ObjectTypeID;
                     this.imageObj.IsPrimary = false; 
                     this.imageObj.IsDeleted = false;
+                    this.imageObj.IsSecondary = false;
                     this.ItemViewModel.ItemPictures.push(this.imageObj);
                     if(this.openedAccidentImages !=undefined)
                     this.openedAccidentImages.push(this.imageObj);
@@ -288,6 +289,64 @@ export class AddItemComponent implements OnInit {
       //this._sharedService.warning("WARNINGS.UPLOADIMAGE")
     }
   }
+
+  uploadFiles2($event: any, ObjectTypeID: number) {
+
+    var totalImages = $event.target.files.length;
+    if ($event.target.files.length > 0) {
+      //this._sharedService.loading = true;
+      //image compress options
+      var option: ResizeOptions = new ResizeOptions();
+      option.Resize_Quality = 80;
+      option.Resize_Type = 'image/jpg';
+      this.compressedImages = new Array<ItemPicture>();
+      //compress image
+      ImageCompressService.filesToCompressedImageSourceEx($event.target.files, option).then(observableImages => {
+
+        observableImages.subscribe((image: any) => {
+
+          this.imageObj = new ItemPicture();
+          this.imageObj.ImageURL = image.compressedImage.imageDataUrl;
+          this.imageObj.OriginalName = image.compressedImage.fileName;
+
+          this.compressedImages.push(this.imageObj);
+          totalImages--;
+          if (totalImages == 0 || totalImages < 0) {
+            // send compresed image base64 to api to save
+            this._commonService.saveAllImage(this.compressedImages)
+              .subscribe(res => {
+                debugger
+                this.ItemViewModel.Item.DescriptionChartImage = res[0].ImageURL;
+                //this._sharedService.success("NOTIFICATIONS.IMAGEUPLOADED");
+                $event = undefined;
+                if (this.imageUpload != undefined)
+                  this.imageUpload.nativeElement.value = '';
+                if (this.modelImageUpload != undefined)
+                  this.modelImageUpload.nativeElement.value = '';
+              },
+                error => {
+                  //this._sharedService.error(error.Message)
+                });
+
+            
+          }
+
+        }, (error) => {
+          $event = undefined;
+          if (this.imageUpload != undefined)
+            this.imageUpload.nativeElement.value = '';
+          if (this.modelImageUpload != undefined)
+            this.modelImageUpload.nativeElement.value = '';
+          //this._sharedService.error(error.Message);
+         // this._sharedService.loading = false;
+        });
+      });
+    } else {
+      //this._sharedService.warning("WARNINGS.UPLOADIMAGE")
+    }
+  }
+
+
   onSubmit() {
     var idx = this.colorCode.findIndex(i => i.isChecked == true);
     if (idx > -1) {
@@ -335,25 +394,43 @@ export class AddItemComponent implements OnInit {
     }
     
   }
-  primaryImage(img){
+  primaryImage(img,index){
     debugger
+    var IsPrimary = this.ItemViewModel.ItemPictures[index].IsPrimary;
     var idx = this.ItemViewModel.ItemPictures.findIndex(a => a.IsPrimary);
-    if (idx > -1) {
-      this.ItemViewModel.ItemPictures[idx].IsPrimary = false; 
-    }
-    this.ItemViewModel.ItemPictures.forEach(a => {
-      if (a.EncryptedName == img.EncryptedName) {
-        a.IsPrimary = true;
+    if (!IsPrimary && idx == -1) {
+      this.ItemViewModel.ItemPictures[index].IsPrimary = true;
+    }else if(!IsPrimary && idx > -1){
+      var IsSecondary = this.ItemViewModel.ItemPictures[index].IsSecondary;
+      var idx2 = this.ItemViewModel.ItemPictures.findIndex(a => a.IsSecondary);
+      if (!IsSecondary && idx2 == -1) {
+        this.ItemViewModel.ItemPictures[index].IsSecondary = true;
+      }else{
+        this.ItemViewModel.ItemPictures[idx2].IsSecondary = false;
+        this.ItemViewModel.ItemPictures[index].IsSecondary = true;
       }
-    })
-
+     
+    }else if (IsPrimary && idx > -1) {
+      var idx2 = this.ItemViewModel.ItemPictures.findIndex(a => a.IsSecondary);
+      if (idx2 > -1) {
+        this.ItemViewModel.ItemPictures[index].IsPrimary = false;
+        this.ItemViewModel.ItemPictures[index].IsSecondary = true;
+        this.ItemViewModel.ItemPictures[idx2].IsSecondary = false;
+        this.ItemViewModel.ItemPictures[idx2].IsPrimary = true;
+      }
+     
+    }else {
+      return
+    }
   }
   GetItem(){
     this.adminService.getItem(this.ItemViewModel.Item.ItemId,1,undefined).subscribe(
       {
         next: (c: any) => {
+          debugger
           this.ItemViewModel = c;
           this.checkedColorCode(this.ItemViewModel.Item.ColorCode);
+          this._sharedService.showSuccess(this.ItemViewModel.Item.Title + ' is going to edit' , this.ItemViewModel.Item.Title)
         },
         error: c => {
           

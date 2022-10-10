@@ -11,6 +11,7 @@ import { AddItemComponent } from './add-item/add-item.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({

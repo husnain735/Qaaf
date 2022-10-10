@@ -4,38 +4,86 @@
       <div class="d-flex justify-content-between bg-gray p-2">
         <div class="align-self-center font-18 font-w-500">Add Item</div>
       </div>
+
       <div class="row mx-0 rr mt-4 justify-content-center">
         <div>
-          <input
-            class="upload-image-relative"
-            id="file_upload"
-            #modelImageUpload
-            multiple
-            type="file"
-            accept="image/gif,image/jpeg,image/*,image/png"
-            (change)="uploadFiles($event, ObjectTypeID)"
-          />
+          <p class="my-2 font-16 font-w-bolder">Item Pictures</p>
+          <div class="p-relative">
+            <input
+              class="upload-image-relative cursor"
+              id="file_upload"
+              #modelImageUpload
+              multiple
+              type="file"
+              accept="image/gif,image/jpeg,image/*,image/png"
+              (change)="uploadFiles($event, ObjectTypeID)"
+            />
+            <i
+              class="fa fa-camera upload-image-absolute"
+              aria-hidden="true"
+            ></i>
+          </div>
         </div>
-        <i class="fa fa-camera upload-image-absolute" aria-hidden="true"></i>
+
         <div class="col-sm-12 col-md-12 col-lg-12 mb-4">
           <ng-container *ngIf="ItemViewModel.ItemPictures.length > 0">
             <div class="row mx-0 mb-3">
-              <ng-container *ngFor="let img of ItemViewModel.ItemPictures | filter: 0 :'IsDeleted'">
-                <div  class="col-sm-12 col-md-4 col-lg-3 cursor">
-                  <div (click)="primaryImage(img)">
+              <ng-container
+                *ngFor="
+                  let img of ItemViewModel.ItemPictures | filter: 0:'IsDeleted';let idx = index
+                "
+              >
+                <div class="col-sm-12 col-md-4 col-lg-3 cursor">
+                  <div (click)="primaryImage(img,idx)">
                     <img
-                      [ngClass]="img.IsPrimary == true ? 'isprimary' : ''"
+                      [ngClass]="img.IsPrimary == true ? 'isprimary' : img.IsSecondary == true ? 'isSecondary' :''"
                       [src]="_sharedService.baseURL + img.ImageURL"
                       class="document-img my-2"
                     />
                   </div>
-                  <i class="fa fa-times-circle remove-icon cursor" (click)="removeImage(img)" aria-hidden="true"></i>
+                  <i
+                    class="fa fa-times-circle remove-icon cursor"
+                    (click)="removeImage(img)"
+                    aria-hidden="true"
+                  ></i>
                 </div>
               </ng-container>
             </div>
           </ng-container>
         </div>
-
+        <div class="mt-3">
+          <p class="my-2 font-16 font-w-bolder">Item Description Picture</p>
+          <div class="p-relative">
+            <input
+              class="upload-image-relative cursor"
+              id="file_upload"
+              #modelImageUpload
+              multiple
+              type="file"
+              accept="image/gif,image/jpeg,image/*,image/png"
+              (change)="uploadFiles2($event, ObjectTypeID)"
+            />
+            <i
+              class="fa fa-camera upload-image-absolute"
+              aria-hidden="true"
+            ></i>
+          </div>
+        </div>
+        <div *ngIf="ItemViewModel.Item.DescriptionChartImage !=  undefined && ItemViewModel.Item.DescriptionChartImage != ''" class="row mx-0">
+          <div class="col-sm-12 col-md-4 col-lg-3 cursor">
+            <div>
+              <img
+                [src]="_sharedService.baseURL + ItemViewModel.Item.DescriptionChartImage"
+                class="document-img my-2"
+              />
+            </div>
+            <i
+              class="fa fa-times-circle remove-icon cursor"
+              (click)="ItemViewModel.Item.DescriptionChartImage = undefined"
+              aria-hidden="true"
+            ></i>
+          </div>
+        </div>
         <div class="col-sm-12 col-md-12 col-lg-8 mb-4">
           <form
             name="form"
@@ -65,7 +113,7 @@
             <div class="form-group">
               <label>Price</label>
               <input
-                appBlockCopyPaste 
+                appBlockCopyPaste
                 type="char"
                 name="Price"
                 class="form-control"
@@ -287,7 +335,8 @@
                   class="form-check-input cursor"
                   type="checkbox"
                   (change)="
-                  ItemViewModel.Item.IsSale = !ItemViewModel.Item.IsSale"
+                    ItemViewModel.Item.IsSale = !ItemViewModel.Item.IsSale
+                  "
                   [checked]="ItemViewModel.Item.IsSale == true"
                   name="exampleRadios"
                   id="IsSale"
@@ -296,6 +345,103 @@
                 />
                 <label class="form-check-label cursor" for="IsSale">
                   IsSale
+                </label>
+              </div>
+            </div>
+            <div *ngIf="ItemViewModel.Item.IsSale" class="form-group">
+              <label>Sale Percentage</label>
+              <input
+                appBlockCopyPaste
+                type="char"
+                name="SalePercentage"
+                class="form-control"
+                [(ngModel)]="ItemViewModel.Item.SalePercentage"
+                #SalePercentage="ngModel"
+                [ngClass]="{
+                  'is-invalid': f.submitted && SalePercentage.invalid
+                }"
+                onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 
+                            && event.charCode <= 57"
+                required
+              />
+              <div
+                *ngIf="f.submitted && SalePercentage.invalid"
+                class="invalid-feedback"
+              >
+                <div *ngIf="SalePercentage.errors.required">
+                  Sale Percentage is required
+                </div>
+              </div>
+            </div>
+            <div class="row mx-0 my-5">
+              <label class="font-22 mb-3">Item Size</label>
+              <div class="form-check col-3">
+                <input
+                  class="form-check-input cursor"
+                  type="checkbox"
+                  (change)="
+                    ItemViewModel.Item.IsSmall = !ItemViewModel.Item.IsSmall
+                  "
+                  [checked]="ItemViewModel.Item.IsSmall == true"
+                  name="exampleRadios"
+                  id="IsSmall"
+                  value="4"
+                  checked
+                />
+                <label class="form-check-label cursor" for="IsSmall">
+                  Small
+                </label>
+              </div>
+              <div class="form-check col-3">
+                <input
+                  class="form-check-input cursor"
+                  type="checkbox"
+                  (change)="
+                    ItemViewModel.Item.IsMedium = !ItemViewModel.Item.IsMedium
+                  "
+                  [checked]="ItemViewModel.Item.IsMedium == true"
+                  name="exampleRadios"
+                  id="IsMedium"
+                  value="4"
+                  checked
+                />
+                <label class="form-check-label cursor" for="IsMedium">
+                  Medium
+                </label>
+              </div>
+              <div class="form-check col-3">
+                <input
+                  class="form-check-input cursor"
+                  type="checkbox"
+                  (change)="
+                    ItemViewModel.Item.IsLarge = !ItemViewModel.Item.IsLarge
+                  "
+                  [checked]="ItemViewModel.Item.IsLarge == true"
+                  name="exampleRadios"
+                  id="IsLarge"
+                  value="4"
+                  checked
+                />
+                <label class="form-check-label cursor" for="IsLarge">
+                  Large
+                </label>
+              </div>
+              <div class="form-check col-3">
+                <input
+                  class="form-check-input cursor"
+                  type="checkbox"
+                  (change)="
+                    ItemViewModel.Item.IsExtraLarge =
+                      !ItemViewModel.Item.IsExtraLarge
+                  "
+                  [checked]="ItemViewModel.Item.IsExtraLarge == true"
+                  name="exampleRadios"
+                  id="IsExtraLarge"
+                  value="4"
+                  checked
+                />
+                <label class="form-check-label cursor" for="IsExtraLarge">
+                  ExtraLarge
                 </label>
               </div>
             </div>
@@ -369,7 +515,7 @@
             </div>
             <div class="text-center">
               <button class="btn-main-primary mr-1" (click)="checkCode()">
-               {{ItemViewModel.Item.ItemId == undefined ? 'Save' : 'Update'}} 
+                {{ ItemViewModel.Item.ItemId == undefined ? "Save" : "Update" }}
               </button>
             </div>
           </form>

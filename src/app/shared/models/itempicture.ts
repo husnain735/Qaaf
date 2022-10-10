@@ -9,4 +9,6 @@ export class ItemPicture {
     ObjectTypeID: number;
     CreatedOn: Date;
     CreatedBy: number;
+    IsSecondary: boolean;
+    SelectedImage: string;
 }

@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
     autoWidth: true,
     smartSpeed: 800,
     items: 1,
-    autoplayTimeout: 7000,
+    autoplayTimeout: 2000,
     rtl: this._sharedService.language == 'ar' ? true : false,
     responsive: {
       0: {
@@ -53,15 +53,15 @@ export class HomeComponent implements OnInit {
     this.ItemModel = new ItemViewModel();
     this.apiData = [
       {
-        url: '../../../assets/images/jpg/Screen Background.jpg',
+        url: '../../../assets/images/jpg/Screen Background 1.jpg',
         id: '1',
       },
       {
-        url: '../../../assets/images/jpg/carousel 2.jpg',
+        url: '../../../assets/images/jpg/Screen Background 1.jpg',
         id: '2',
       },
       {
-        url: '../../../assets/images/jpg/Screen Background.jpg',
+        url: '../../../assets/images/jpg/Screen Background 1.jpg',
         id: '3',
       },
     ];
@@ -70,8 +70,41 @@ export class HomeComponent implements OnInit {
   GetAllItems(){
     this._itemService.GetAllItems(this.IsSale,this.IsGender,this.IsStitch,this.IsPrimary,this.ItemId,this.IsHomePage).subscribe((res: any) => {
       this.ItemModel = res;
+      this.ItemModel.NewPictures.forEach(i => {
+        if (i.IsPrimary == true) {
+          i.SelectedImage = i.ImageURL
+        }else {
+          i.SelectedImage = null
+        }
+      })
     }, error => {
 
     })
+  }
+  mouseOver(ItemId,ItemPictureId){
+    var ImageURL;  
+    this.ItemModel.NewPictures.forEach(i => {
+      if (i.ItemId == ItemId && i.IsSecondary == true) {
+        ImageURL = i.ImageURL
+      }
+      })
+    var idx = this.ItemModel.NewPictures.findIndex(i => i.ItemPictureId == ItemPictureId);
+    if (idx > -1) {
+      this.ItemModel.NewPictures[idx].SelectedImage = ImageURL;
+    }
+
+  }
+  mouseLeave(ItemId,ItemPictureId){
+    var ImageURL;  
+    this.ItemModel.NewPictures.forEach(i => {
+      if (i.ItemId == ItemId && i.IsPrimary == true) {
+        ImageURL = i.ImageURL
+      }
+      })
+    var idx = this.ItemModel.NewPictures.findIndex(i => i.ItemPictureId == ItemPictureId);
+    if (idx > -1) {
+      this.ItemModel.NewPictures[idx].SelectedImage = ImageURL;
+    }
+    console.log('Leave')
   }
 }

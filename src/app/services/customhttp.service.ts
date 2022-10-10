@@ -217,8 +217,8 @@ export class CustomHttpService {
   }
 
   signout() {
-    // localStorage.clear();
-    // this._router.navigate(['/auth/admin-sign-in'])
+    localStorage.clear();
+    this._router.navigate(['/auth/admin-sign-in']);
   }
 }
 

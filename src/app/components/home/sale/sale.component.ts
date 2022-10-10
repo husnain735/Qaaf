@@ -16,7 +16,7 @@ export class SaleComponent implements OnInit {
   ) {}
   IsSale: boolean = true;
   IsGender: number = undefined;
-  IsStitch: number = 6;
+  IsStitch: number = undefined;
   IsPrimary: boolean = undefined;
   ItemId: number = undefined;
   IsHomePage: boolean = undefined;

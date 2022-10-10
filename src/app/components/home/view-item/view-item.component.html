@@ -1,28 +1,47 @@
-
-
-
 <div class="container mt-5 pt-5">
-    <div class="row mx-0 mb-5">
-        <div class="col-lg-6 col-md-6 col-sm-12">
-            <div class="row mx-0">
-                <div class="col-4 overflow-images" style="overflow-y: scroll;height: 586px;">
-                    <div class="row mx-0 mb-2" *ngFor="let itemPictures of ItemModel.ItemPictures">
-                        <img (click)="zoomImage = itemPictures.ImageURL" 
-                             [src]="api_url + itemPictures.ImageURL" alt="Card image cap">
-                    </div>
-                </div>
-                <div class="col-8 p-relative card-primary-image-container" (click)="imageSection($event,1)">
-                    <img [gallerize] *ngIf="zoomImage != undefined" id="imgZoom" 
-                    (click)="lightbox.open(0, 'lightbox', {panelClass: 'fullscreen'})"
-                    [src]="api_url + zoomImage" class="card-primary-image">
-                    <!-- (mousemove)="zoomIn($event)" 
-                    (mouseout)="zoomOut()" -->
-                    <!-- <div id="overlay"></div> -->
-                </div>
+  <div class="row mx-0 mb-5">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <div class="row mx-0">
+        <div
+          class="col-12 px-0 p-relative card-primary-image-container cursor"
+          (click)="imageSection($event, 1)"
+        >
+          <div class="row mx-0">
+            <div class="col-2 px-0" style="overflow-y: auto; height: 520px;">
+              <div
+      
+                class="side-image-container" width="32" height="32"
+                *ngFor="let itemPictures of ItemModel.ItemPictures"
+              >
+                <img
+                  [ngClass]="itemPictures.ImageURL == zoomImage ? 'border-secondary' : ''"
+                  class="side-image"
+                  (click)="zoomImage = itemPictures.ImageURL"
+                  [src]="api_url + itemPictures.ImageURL"
+                  alt="Card image cap"
+                />
+              </div>
             </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="col-10 px-0 text-center">
+              <img
+                [gallerize]
+                *ngIf="zoomImage != undefined"
+                id="imgZoom"
+                (click)="
+                  lightbox.open(0, 'lightbox', { panelClass: 'fullscreen' })
+                "
+                [src]="api_url + zoomImage"
+                class="card-primary-image"
+              />
+            </div>
+          </div>
 
+          <!-- (mousemove)="zoomIn($event)" 
+                    (mouseout)="zoomOut()" -->
+          <!-- <div id="overlay"></div> -->
         </div>
+      </div>
     </div>
+    <div class="col-lg-6 col-md-6 col-sm-12"></div>
+  </div>
 </div>

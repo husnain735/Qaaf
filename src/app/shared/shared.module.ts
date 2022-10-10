@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BlockCopyPasteDirective } from '../directives/block-copy-paste.directive';
 import { FilterPipe } from '../pipes/filter.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [NavbarComponent,FooterComponent,BlockCopyPasteDirective,FilterPipe],
@@ -18,9 +19,15 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NgbModule,
     HttpClientModule,
     NgxPaginationModule,
+    ToastrModule.forRoot({
+      closeButton: true,
+      timeOut: 2000, // 15 seconds
+      progressBar: true,
+    }),
   ],
   exports:[
-    NavbarComponent,FooterComponent,NgbModule,HttpClientModule,BlockCopyPasteDirective,FilterPipe,NgxPaginationModule
+    NavbarComponent,FooterComponent,NgbModule,HttpClientModule,BlockCopyPasteDirective,FilterPipe,NgxPaginationModule,
+    ToastrModule,
   ]
 })
 export class SharedModule { }

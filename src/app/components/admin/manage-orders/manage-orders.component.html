@@ -1,11 +1,108 @@
 <div class="container-fluid py-5 my-3">
-    <div class="row mx-0">
-        <div class="col-12">
-            <div class="d-flex justify-content-between bg-gray p-2">
-                <div class="align-self-center font-18 font-w-500">
-                    Order
-                </div>
-            </div>
-        </div>
+  <div class="row mx-0">
+    <div class="col-12">
+      <div class="d-flex justify-content-between bg-gray p-2">
+        <div class="align-self-center font-18 font-w-500">Order</div>
+      </div>
     </div>
+  </div>
+  <div class="row mx-0 mt-2">
+    <div class="col-12">
+      <div class="d-flex bg-dark cursor">
+        <div class="align-self-center font-18 font-w-500 text-white border-1 border-white border-right p-2" 
+        [ngClass]="UnOrderedList && !CompleteList  ? 'secondary-bg-color' : 'primary-bg-color'"
+        (click)="UnOrderedList = true;CompleteList = false">UnOrdered</div>
+        <div class="align-self-center font-18 font-w-500 text-white border-1 border-white border-right p-2"
+        [ngClass]="!UnOrderedList && !CompleteList ? 'secondary-bg-color' : 'primary-bg-color'"
+        (click)="UnOrderedList = false;CompleteList = false">Ordered</div>
+        <div class="align-self-center font-18 font-w-500 text-white border-1 border-white p-2"
+        [ngClass]="CompleteList && !UnOrderedList ? 'secondary-bg-color' : 'primary-bg-color'"
+        (click)="!UnOrderedList = false;CompleteList = true">Complete</div>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="UnOrderedList">
+    <div class="row mx-0 mt-3">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="ProductCode"
+          placeholder="Search by Product Code"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-success"
+            type="button"
+            (click)="PageNo = 1; ItemId = undefined; GetItem()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row mx-0 mt-3">
+      <ng-container
+        *ngFor="
+          let item of ItemModel.Items
+            | paginate
+              : {
+                  itemsPerPage: 8,
+                  totalItems: ItemModel.TotalItems,
+                  currentPage: PageNo
+                };
+          let idx = index
+        "
+      >
+        <ng-container
+          *ngFor="
+            let itemPictures of ItemModel.ItemPictures
+              | filter: item.ItemId:'ItemId'
+              | filter: 1:'IsPrimary'
+          "
+        >
+          <div class="col-12 mb-2 zoom cursor">
+            <div class="card p-2 shadow-sm b-none">
+              <div class="card-body p-0 row mx-0">
+                <div class="col-10 p-0 d-flex">
+                  <img
+                    class="card-img-top list-card-icon"
+                    [src]="api_url + itemPictures.ImageURL"
+                  />
+                  <div class="ml-2">
+                    <h5 class="card-title mb-0">{{ item.Title }}</h5>
+                    <p class="mb-0 card-text font-16 secondary-color font-w-bold">
+                      Rs.{{
+                        item.DiscountedPrice != undefined
+                          ? item.DiscountedPrice
+                          : item.Price
+                      }}
+                      <span
+                        *ngIf="item.DiscountedPrice != undefined"
+                        class="line-through gray"
+                        >Rs.{{ item.Price }}</span
+                      >
+                    </p>
+                    <p class="mb-0">{{ item.ProductCode }}</p>
+                  </div>
+                </div>
+                <div class="col-2 p-0 d-flex justify-content-end">
+                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+    <pagination-controls
+      *ngIf="ItemModel.TotalItems > 8"
+      class="pagination"
+      style="cursor: pointer"
+      (pageChange)="PageNo = $event; GetItem()"
+    >
+    </pagination-controls>
+  </ng-container>
 </div>

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { NgxUiLoaderConfig, NgxUiLoaderService } from 'ngx-ui-loader';
 import { environment } from 'src/environments/environment';
 
@@ -12,11 +13,23 @@ export class SharedService {
   baseURL = environment.API_URL;
   tokenObj: any;
   config: NgxUiLoaderConfig;
-  constructor(private ngxUiLoaderService: NgxUiLoaderService) {
+  constructor(private toastrService: ToastrService,private ngxUiLoaderService: NgxUiLoaderService) {
     this.config = this.ngxUiLoaderService.getDefaultConfig();
   }
 
-  error(message: string) {
-    //this._toastr.error(this.translate.instant(message));
+  public showSuccess(message,title): void {
+    this.toastrService.success(message, title);
+  }
+
+  public showInfo(message,title): void {
+    this.toastrService.info(message, title);
+  }
+
+  public showWarning(message,title): void {
+    this.toastrService.warning(message, title);
+  }
+
+  public showError(message,title): void {
+    this.toastrService.error(message, title);
   }
 }

@@ -12,7 +12,7 @@
   <div
     class="col-lg-3 col-md-3 col-sm-12 col-12 text-lg-end text-center mt-lg-0 mt-md-0 mt-3"
   >
-    <i (click)="signin()" [routerLink]="'/admin'" class="fa fa-sign-in font-12 text-dark mr-3 cursor" aria-hidden="true"></i>
+    <!-- <i (click)="signin()" [routerLink]="'/admin'" class="fa fa-sign-in font-12 text-dark mr-3 cursor" aria-hidden="true"></i> -->
     <img
       class="socialMedia-icon mr-3 cursor"
       src="../../../assets/images/png/instagram.png"
@@ -98,7 +98,7 @@
               id="home"
               [ngClass]="
                 _sharedService.language == 'en'
-                  ? 'font-family-en font-14 '
+                  ? 'font-family-en font-16 '
                   : 'font-family-ar font-18 '
               "
               [ngClass]="_router.url === '/home' || _router.url === '/' ? 'bb-secondary-2px' : ''"
@@ -133,7 +133,7 @@
               id="new-arrival"
               [ngClass]="
                 _sharedService.language == 'en'
-                  ? 'font-family-en font-14 '
+                  ? 'font-family-en font-16 '
                   : 'font-family-ar font-18 '
               "
               [ngClass]="_router.url === '/new-arrival' ? 'bb-secondary-2px' : ''"
@@ -168,7 +168,7 @@
               id="sale"
               [ngClass]="
                 _sharedService.language == 'en'
-                  ? 'font-family-en font-14 '
+                  ? 'font-family-en font-16 '
                   : 'font-family-ar font-18 '
               "
               [ngClass]="_router.url === '/sale' ? 'bb-secondary-2px' : ''"
@@ -203,7 +203,7 @@
               id="womens"
               [ngClass]="
                 _sharedService.language == 'en'
-                  ? 'font-family-en font-14 '
+                  ? 'font-family-en font-16 '
                   : 'font-family-ar font-18 '
               "
               [ngClass]="_router.url === '/womens' ? 'bb-secondary-2px' : ''"
@@ -238,7 +238,7 @@
               id="girls"
               [ngClass]="
                 _sharedService.language == 'en'
-                  ? 'font-family-en font-14 '
+                  ? 'font-family-en font-16 '
                   : 'font-family-ar font-18 '
               "
               [ngClass]="_router.url === '/girls' ? 'bb-secondary-2px' : ''"
@@ -273,7 +273,7 @@
               id="stitched"
               [ngClass]="
                 _sharedService.language == 'en'
-                  ? 'font-family-en font-14 '
+                  ? 'font-family-en font-16 '
                   : 'font-family-ar font-18 '
               "
               [ngClass]="_router.url === '/stitched' ? 'bb-secondary-2px' : ''"
@@ -308,7 +308,7 @@
               id="unstitched"
               [ngClass]="
                 _sharedService.language == 'en'
-                  ? 'font-family-en font-14 '
+                  ? 'font-family-en font-16 '
                   : 'font-family-ar font-18 '
               "
               [ngClass]="_router.url === '/unstitched' ? 'bb-secondary-2px' : ''"

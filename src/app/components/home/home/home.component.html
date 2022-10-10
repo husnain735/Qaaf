@@ -3,8 +3,7 @@
     <ng-container *ngFor="let slide of apiData">
       <ng-template class="slide" carouselSlide [id]="slide.id">
         <img
-          class="carousel-img pt-lg-0 pt-md-0 pt-sm-5 pt-5"
-          style="height: 310px;object-fit:cover"
+          class="carousel-img pt-lg-0 pt-md-0 pt-sm-5 pt-5 w-100"
           [src]="slide.url"
           [alt]="slide.id"
         />
@@ -12,7 +11,7 @@
     </ng-container>
   </owl-carousel-o>
 </div>
-<div>
+<div class="container-lg px-0 py-5">
   <div
     *ngIf="ItemModel.New != undefined && ItemModel.New.length > 0"
     class="row mx-0"
@@ -22,8 +21,8 @@
       <h5 class="new-h5">NEW PRODUCTS</h5>
     </div>
 
-    <div class="container-fluid my-5">
-      <div class="row mx-0" [ngClass]="ItemModel.New != undefined && ItemModel.New.length >= 4 ? 'justify-content-center' : ''">
+    <div class="container-fluid px-0 my-5">
+      <div class="row mx-0">
         <ng-container *ngFor="let item of ItemModel.New">
           <ng-container
             *ngFor="
@@ -32,7 +31,7 @@
                 | filter: 1:'IsPrimary'
             "
           >
-            <div class="col-lg-3-custom col-md-4 col-sm-12 col-12 mb-4 px-4">
+            <div class="col-lg-3-custom col-md-4 col-sm-6 col-6 mb-4 px-lg-4 px-1">
               <div
                 class="card b-shadow c-border cursor"
                 [routerLink]="['/view-item']"
@@ -41,15 +40,17 @@
                 <div class="card-header b-zero p-0">
                   <div class="p-relative pt-100">
                     <img
+                    (mouseover)="mouseOver(itemPictures.ItemId,itemPictures.ItemPictureId)"
+                    (mouseleave)="mouseLeave(itemPictures.ItemId,itemPictures.ItemPictureId)"
                       class="card-img"
-                      [src]="api_url + itemPictures.ImageURL"
+                      [src]="api_url + itemPictures.SelectedImage"
                       alt="Card image cap"
                     />
                   </div>
                 </div>
                 <div class="card-body">
                   <h5 class="card-title font-15">{{ item.Title }}</h5>
-                  <p class="card-text font-14 secondary-color font-w-bold">
+                  <p class="card-text font-16 secondary-color font-w-bold">
                     Rs.{{
                       item.DiscountedPrice != undefined
                         ? item.DiscountedPrice
@@ -79,7 +80,7 @@
       <h5 class="new-h5">SALE PRODUCTS</h5>
     </div>
     <div class="container-fluid mt-5">
-      <div class="row mx-0" [ngClass]="ItemModel.Sale != undefined && ItemModel.Sale.length >= 4 ? 'justify-content-center' : ''">
+      <div class="row mx-0">
         <ng-container *ngFor="let item of ItemModel.Sale">
           <ng-container
             *ngFor="
@@ -88,7 +89,7 @@
                 | filter: 1:'IsPrimary'
             "
           >
-            <div class="col-lg-3-custom col-md-4 col-sm-12 col-12 mb-4 px-4">
+            <div class="col-lg-3-custom col-md-4 col-sm-12 col-12 mb-4 px-4 p-relative">
               <div
                 class="card b-shadow c-border cursor"
                 [routerLink]="['/view-item']"
@@ -105,7 +106,7 @@
                 </div>
                 <div class="card-body">
                   <h5 class="card-title font-15">{{ item.Title }}</h5>
-                  <p class="card-text font-14 secondary-color font-w-bold">
+                  <p class="card-text font-16 secondary-color font-w-bold">
                     Rs.{{
                       item.DiscountedPrice != undefined
                         ? item.DiscountedPrice
@@ -119,10 +120,13 @@
                   </p>
                 </div>
               </div>
+              <span *ngIf="item.SalePercentage != undefined" class="salePercentage">{{item.SalePercentage}}%&nbsp;off</span>
             </div>
+            
           </ng-container>
         </ng-container>
       </div>
+     
     </div>
   </div>
 
@@ -135,7 +139,7 @@
       <h5 class="new-h5">UNSTITCHED</h5>
     </div>
     <div class="container-fluid mt-5 pb-5">
-      <div class="row mx-0 pb-5" [ngClass]="ItemModel.UnStitched != undefined && ItemModel.UnStitched.length >= 4 ? 'justify-content-center' : ''">
+      <div class="row mx-0 pb-5">
         <ng-container *ngFor="let item of ItemModel.UnStitched">
           <ng-container
             *ngFor="
@@ -161,7 +165,7 @@
                 </div>
                 <div class="card-body">
                   <h5 class="card-title font-15">{{ item.Title }}</h5>
-                  <p class="card-text font-14 secondary-color font-w-bold">
+                  <p class="card-text font-16 secondary-color font-w-bold">
                     Rs.{{
                       item.DiscountedPrice != undefined
                         ? item.DiscountedPrice
