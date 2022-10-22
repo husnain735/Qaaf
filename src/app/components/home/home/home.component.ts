@@ -76,35 +76,100 @@ export class HomeComponent implements OnInit {
         }else {
           i.SelectedImage = null
         }
+      });
+      this.ItemModel.SalePictures.forEach(i => {
+        if (i.IsPrimary == true) {
+          i.SelectedImage = i.ImageURL
+        }else {
+          i.SelectedImage = null
+        }
+      });
+      this.ItemModel.UnStitchedPictures.forEach(i => {
+        if (i.IsPrimary == true) {
+          i.SelectedImage = i.ImageURL
+        }else {
+          i.SelectedImage = null
+        }
       })
     }, error => {
 
     })
   }
-  mouseOver(ItemId,ItemPictureId){
-    var ImageURL;  
-    this.ItemModel.NewPictures.forEach(i => {
-      if (i.ItemId == ItemId && i.IsSecondary == true) {
-        ImageURL = i.ImageURL
+  mouseOver(ItemId,ItemPictureId,ImageType){
+    var ImageURL;
+    if (ImageType == 1) {
+      this.ItemModel.NewPictures.forEach(i => {
+        if (i.ItemId == ItemId && i.IsSecondary == true) {
+          ImageURL = i.ImageURL
+        }
+        })
+      var idx = this.ItemModel.NewPictures.findIndex(i => i.ItemPictureId == ItemPictureId);
+      if (idx > -1) {
+        this.ItemModel.NewPictures[idx].SelectedImage = ImageURL;
       }
-      })
-    var idx = this.ItemModel.NewPictures.findIndex(i => i.ItemPictureId == ItemPictureId);
-    if (idx > -1) {
-      this.ItemModel.NewPictures[idx].SelectedImage = ImageURL;
+    }else if (ImageType == 2) {
+      this.ItemModel.SalePictures.forEach(i => {
+        if (i.ItemId == ItemId && i.IsSecondary == true) {
+          ImageURL = i.ImageURL
+        }
+        })
+      var idx = this.ItemModel.SalePictures.findIndex(i => i.ItemPictureId == ItemPictureId);
+      if (idx > -1) {
+        this.ItemModel.SalePictures[idx].SelectedImage = ImageURL;
+      }
+    }else if (ImageType == 3) {
+      this.ItemModel.UnStitchedPictures.forEach(i => {
+        if (i.ItemId == ItemId && i.IsSecondary == true) {
+          ImageURL = i.ImageURL
+        }
+        })
+      var idx = this.ItemModel.UnStitchedPictures.findIndex(i => i.ItemPictureId == ItemPictureId);
+      if (idx > -1) {
+        this.ItemModel.UnStitchedPictures[idx].SelectedImage = ImageURL;
+      }
     }
 
+    var element = document.getElementById(ItemId);
+    element.classList.add('fadeInAnimation');
+    element.classList.remove("fadeInAnimation2");
   }
-  mouseLeave(ItemId,ItemPictureId){
-    var ImageURL;  
-    this.ItemModel.NewPictures.forEach(i => {
-      if (i.ItemId == ItemId && i.IsPrimary == true) {
-        ImageURL = i.ImageURL
+  mouseLeave(ItemId,ItemPictureId,ImageType){
+    debugger
+    var ImageURL;
+    if (ImageType == 1) {
+      this.ItemModel.NewPictures.forEach(i => {
+        if (i.ItemId == ItemId && i.IsPrimary == true) {
+          ImageURL = i.ImageURL
+        }
+        })
+      var idx = this.ItemModel.NewPictures.findIndex(i => i.ItemPictureId == ItemPictureId);
+      if (idx > -1) {
+        this.ItemModel.NewPictures[idx].SelectedImage = ImageURL;
       }
-      })
-    var idx = this.ItemModel.NewPictures.findIndex(i => i.ItemPictureId == ItemPictureId);
-    if (idx > -1) {
-      this.ItemModel.NewPictures[idx].SelectedImage = ImageURL;
+    }else if (ImageType == 2) {
+      this.ItemModel.SalePictures.forEach(i => {
+        if (i.ItemId == ItemId && i.IsPrimary == true) {
+          ImageURL = i.ImageURL
+        }
+        })
+      var idx = this.ItemModel.SalePictures.findIndex(i => i.ItemPictureId == ItemPictureId);
+      if (idx > -1) {
+        this.ItemModel.SalePictures[idx].SelectedImage = ImageURL;
+      }
+    }else if (ImageType == 3) {
+      this.ItemModel.UnStitchedPictures.forEach(i => {
+        if (i.ItemId == ItemId && i.IsPrimary == true) {
+          ImageURL = i.ImageURL
+        }
+        })
+      var idx = this.ItemModel.UnStitchedPictures.findIndex(i => i.ItemPictureId == ItemPictureId);
+      if (idx > -1) {
+        this.ItemModel.UnStitchedPictures[idx].SelectedImage = ImageURL;
+      }
     }
-    console.log('Leave')
+
+    var id = document.getElementById(ItemId);
+    id.classList.add("fadeInAnimation2");
+    id.classList.remove("fadeInAnimation");
   }
 }

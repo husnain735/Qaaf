@@ -41,9 +41,47 @@ export class StitchedComponent implements OnInit {
       .subscribe(
         (res: any) => {
           this.ItemModel = res;
+          this.ItemModel.ItemPictures.forEach(i => {
+            if (i.IsPrimary == true) {
+              i.SelectedImage = i.ImageURL
+            }else {
+              i.SelectedImage = null
+            }
+          });
         },
         (error) => {}
       );
   }
+  mouseOver(ItemId,ItemPictureId){
+    var ImageURL;
 
+      this.ItemModel.ItemPictures.forEach(i => {
+        if (i.ItemId == ItemId && i.IsSecondary == true) {
+          ImageURL = i.ImageURL
+        }
+        })
+      var idx = this.ItemModel.ItemPictures.findIndex(i => i.ItemPictureId == ItemPictureId);
+      if (idx > -1) {
+        this.ItemModel.ItemPictures[idx].SelectedImage = ImageURL;
+      }
+    var element = document.getElementById(ItemId);
+    element.classList.add('fadeInAnimation');
+    element.classList.remove("fadeInAnimation2");
+  }
+  mouseLeave(ItemId,ItemPictureId){
+    var ImageURL;
+
+      this.ItemModel.ItemPictures.forEach(i => {
+        if (i.ItemId == ItemId && i.IsPrimary == true) {
+          ImageURL = i.ImageURL
+        }
+        })
+      var idx = this.ItemModel.ItemPictures.findIndex(i => i.ItemPictureId == ItemPictureId);
+      if (idx > -1) {
+        this.ItemModel.ItemPictures[idx].SelectedImage = ImageURL;
+      }
+    var id = document.getElementById(ItemId);
+    id.classList.add("fadeInAnimation2");
+    id.classList.remove("fadeInAnimation");
+  }
 }

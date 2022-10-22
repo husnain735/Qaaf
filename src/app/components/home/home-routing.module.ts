@@ -36,7 +36,7 @@ const routes: Routes = [
           component: WomensComponent,
         },
         {
-          path:'girls',
+          path:'kids',
           component: GirlsComponent,
         },
         {

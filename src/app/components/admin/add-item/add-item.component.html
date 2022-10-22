@@ -120,7 +120,7 @@
                 [(ngModel)]="ItemViewModel.Item.Price"
                 #Price="ngModel"
                 [ngClass]="{ 'is-invalid': f.submitted && Price.invalid }"
-                onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 
+                onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47
                             && event.charCode <= 57"
                 required
               />
@@ -141,7 +141,7 @@
                 [(ngModel)]="ItemViewModel.Item.DiscountedPrice"
                 #Discount="ngModel"
                 [ngClass]="{ 'is-invalid': f.submitted && Discount.invalid }"
-                onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 
+                onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47
                             && event.charCode <= 57"
                 required
               />
@@ -183,7 +183,7 @@
                 [(ngModel)]="ItemViewModel.Item.Quantity"
                 #Quantity="ngModel"
                 [ngClass]="{ 'is-invalid': f.submitted && Quantity.invalid }"
-                onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 
+                onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47
                             && event.charCode <= 57"
                 required
               />
@@ -360,7 +360,7 @@
                 [ngClass]="{
                   'is-invalid': f.submitted && SalePercentage.invalid
                 }"
-                onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47 
+                onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 46 && event.charCode != 47
                             && event.charCode <= 57"
                 required
               />
@@ -375,74 +375,12 @@
             </div>
             <div class="row mx-0 my-5">
               <label class="font-22 mb-3">Item Size</label>
-              <div class="form-check col-3">
-                <input
-                  class="form-check-input cursor"
-                  type="checkbox"
-                  (change)="
-                    ItemViewModel.Item.IsSmall = !ItemViewModel.Item.IsSmall
-                  "
-                  [checked]="ItemViewModel.Item.IsSmall == true"
-                  name="exampleRadios"
-                  id="IsSmall"
-                  value="4"
-                  checked
-                />
-                <label class="form-check-label cursor" for="IsSmall">
-                  Small
-                </label>
-              </div>
-              <div class="form-check col-3">
-                <input
-                  class="form-check-input cursor"
-                  type="checkbox"
-                  (change)="
-                    ItemViewModel.Item.IsMedium = !ItemViewModel.Item.IsMedium
-                  "
-                  [checked]="ItemViewModel.Item.IsMedium == true"
-                  name="exampleRadios"
-                  id="IsMedium"
-                  value="4"
-                  checked
-                />
-                <label class="form-check-label cursor" for="IsMedium">
-                  Medium
-                </label>
-              </div>
-              <div class="form-check col-3">
-                <input
-                  class="form-check-input cursor"
-                  type="checkbox"
-                  (change)="
-                    ItemViewModel.Item.IsLarge = !ItemViewModel.Item.IsLarge
-                  "
-                  [checked]="ItemViewModel.Item.IsLarge == true"
-                  name="exampleRadios"
-                  id="IsLarge"
-                  value="4"
-                  checked
-                />
-                <label class="form-check-label cursor" for="IsLarge">
-                  Large
-                </label>
-              </div>
-              <div class="form-check col-3">
-                <input
-                  class="form-check-input cursor"
-                  type="checkbox"
-                  (change)="
-                    ItemViewModel.Item.IsExtraLarge =
-                      !ItemViewModel.Item.IsExtraLarge
-                  "
-                  [checked]="ItemViewModel.Item.IsExtraLarge == true"
-                  name="exampleRadios"
-                  id="IsExtraLarge"
-                  value="4"
-                  checked
-                />
-                <label class="form-check-label cursor" for="IsExtraLarge">
-                  ExtraLarge
-                </label>
+              <div class="col-4" *ngFor="let item of ItemViewModel.ItemSize;let idx = index ">
+                <div class="form-check">
+                  <input type="checkbox" (change)="item.IsChecked = !item.IsChecked"
+                  [checked]="item.IsChecked" class="form-check-input" [id]="'exampleCheck' + item.TypeId">
+                  <label class="form-check-label" [for]="'exampleCheck' + item.TypeId">{{item.TypeName}}</label>
+                </div>
               </div>
             </div>
             <div class="form-group">

@@ -7,6 +7,7 @@ import { CommonService } from 'src/app/services/common.service';
 import { SharedService } from 'src/app/services/shared.service';
 import { ItemViewModel } from 'src/app/shared/models/ViewModels/ItemViewModel';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ItemSize } from 'src/app/shared/models/ItemSize';
 
 @Component({
   selector: 'app-add-item',
@@ -15,7 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AddItemComponent implements OnInit {
 
-  constructor(private adminService:AdminService,private _commonService: CommonService, 
+  constructor(private adminService:AdminService,private _commonService: CommonService,
     public _sharedService: SharedService,
     private route: ActivatedRoute,private _route: Router) { }
   @ViewChild('imageUpload', { static: false }) imageUpload;
@@ -30,11 +31,16 @@ export class AddItemComponent implements OnInit {
   imageObj: ItemPicture;
   openedAccidentImages : Array<ItemPicture>;
   ObjectTypeID: number = 11;
+
   ngOnInit(): void {
+
     this.ItemViewModel = new ItemViewModel();
     this.route.queryParams.forEach((params: any) => {
       this.ItemViewModel.Item.ItemId = params.queryParam;
     });
+    if ( this.ItemViewModel.Item.ItemId == undefined) {
+      this.itemSize();
+    }
     if (this.ItemViewModel.Item.ItemId != undefined) {
       this.GetItem();
     }
@@ -164,11 +170,103 @@ export class AddItemComponent implements OnInit {
       code:'#2e8b57',
       isChecked: false
     }
+
   ]
-  
+
   }
-  
-  
+
+  itemSize(){
+    this.ItemViewModel.ItemSize =  [
+      {
+        IsChecked: false,
+        TypeId: 1,
+        TypeName: 'Small',
+        IsDeleted: false,
+        ItemId : 0,
+        ItemSizeId: 0
+      },
+      {
+        IsChecked: false,
+        TypeId: 2,
+        TypeName: 'Medium',
+        IsDeleted: false,
+        ItemId : 0,
+        ItemSizeId: 0
+      },
+      {
+        IsChecked: false,
+        TypeId: 3,
+        TypeName: 'Large',
+        IsDeleted: false,
+        ItemId : 0,
+        ItemSizeId: 0
+      },
+      {
+        IsChecked: false,
+        TypeId: 11,
+        TypeName: 'Extra Large',
+        IsDeleted: false,
+        ItemId : 0,
+        ItemSizeId: 0
+      },
+      {
+        IsChecked: false,
+        TypeId: 12,
+        TypeName: '3 to 4 years',
+        IsDeleted: false,
+        ItemId : 0,
+        ItemSizeId: 0
+      },
+      {
+        IsChecked: false,
+        TypeId: 13,
+        TypeName: '5 to 6 years',
+        IsDeleted: false,
+        ItemId : 0,
+        ItemSizeId: 0
+      },
+      {
+        IsChecked: false,
+        TypeId: 14,
+        TypeName: '7 to 8 years',
+        IsDeleted: false,
+        ItemId : 0,
+        ItemSizeId: 0
+      },
+      {
+        IsChecked: false,
+        TypeId: 15,
+        TypeName: '9 to 10 years',
+        IsDeleted: false,
+        ItemId : 0,
+        ItemSizeId: 0
+      },
+      {
+        IsChecked: false,
+        TypeId: 16,
+        TypeName: '11 to 12 years',
+        IsDeleted: false,
+        ItemId : 0,
+        ItemSizeId: 0
+      },
+      {
+        IsChecked: false,
+        TypeId: 17,
+        TypeName: '13 to 14 years',
+        IsDeleted: false,
+        ItemId : 0,
+        ItemSizeId: 0
+      },
+      {
+        IsChecked: false,
+        TypeId: 18,
+        TypeName: '15 to 16 years',
+        IsDeleted: false,
+        ItemId : 0,
+        ItemSizeId: 0
+      },
+    ]
+  }
   checkedColorCode(code: string){
     var idx = this.colorCode.findIndex(a => a.isChecked == true);
     if (idx > -1) {
@@ -252,7 +350,7 @@ export class AddItemComponent implements OnInit {
                     this.imageObj.EncryptedName = element.EncryptedName;
                     this.imageObj.OriginalName = element.OriginalName;
                     this.imageObj.ObjectTypeID = ObjectTypeID;
-                    this.imageObj.IsPrimary = false; 
+                    this.imageObj.IsPrimary = false;
                     this.imageObj.IsDeleted = false;
                     this.imageObj.IsSecondary = false;
                     this.ItemViewModel.ItemPictures.push(this.imageObj);
@@ -272,7 +370,7 @@ export class AddItemComponent implements OnInit {
                   //this._sharedService.error(error.Message)
                 });
 
-            
+
           }
 
         }, (error) => {
@@ -328,7 +426,7 @@ export class AddItemComponent implements OnInit {
                   //this._sharedService.error(error.Message)
                 });
 
-            
+
           }
 
         }, (error) => {
@@ -367,10 +465,11 @@ export class AddItemComponent implements OnInit {
       if (this.ItemViewModel.Item.ItemId == undefined) {
         this.ItemViewModel = new ItemViewModel();
         this.colorCode.forEach(a => a.isChecked = false);
+        this.itemSize();
       }else {
         this._route.navigate(['/admin/manage-items'])
       }
-      
+
     }, error => {
 
     })
@@ -382,9 +481,9 @@ export class AddItemComponent implements OnInit {
         if (idx > -1) {
           this.ItemViewModel.ItemPictures.splice(idx, 1);
         }
-        
+
       }, error => {
-  
+
       });
     }else {
       var idx = this.ItemViewModel.ItemPictures.findIndex(i => i.ItemPictureId == img.ItemPictureId);
@@ -392,10 +491,9 @@ export class AddItemComponent implements OnInit {
         this.ItemViewModel.ItemPictures[idx].IsDeleted = true;
       }
     }
-    
+
   }
   primaryImage(img,index){
-    debugger
     var IsPrimary = this.ItemViewModel.ItemPictures[index].IsPrimary;
     var idx = this.ItemViewModel.ItemPictures.findIndex(a => a.IsPrimary);
     if (!IsPrimary && idx == -1) {
@@ -409,7 +507,7 @@ export class AddItemComponent implements OnInit {
         this.ItemViewModel.ItemPictures[idx2].IsSecondary = false;
         this.ItemViewModel.ItemPictures[index].IsSecondary = true;
       }
-     
+
     }else if (IsPrimary && idx > -1) {
       var idx2 = this.ItemViewModel.ItemPictures.findIndex(a => a.IsSecondary);
       if (idx2 > -1) {
@@ -418,7 +516,7 @@ export class AddItemComponent implements OnInit {
         this.ItemViewModel.ItemPictures[idx2].IsSecondary = false;
         this.ItemViewModel.ItemPictures[idx2].IsPrimary = true;
       }
-     
+
     }else {
       return
     }
@@ -427,15 +525,18 @@ export class AddItemComponent implements OnInit {
     this.adminService.getItem(this.ItemViewModel.Item.ItemId,1,undefined).subscribe(
       {
         next: (c: any) => {
-          debugger
           this.ItemViewModel = c;
+          if ( this.ItemViewModel.ItemSize == undefined ||  this.ItemViewModel.ItemSize.length == 0) {
+            this.itemSize();
+          }
+
           this.checkedColorCode(this.ItemViewModel.Item.ColorCode);
           this._sharedService.showSuccess(this.ItemViewModel.Item.Title + ' is going to edit' , this.ItemViewModel.Item.Title)
         },
         error: c => {
-          
+
         }
-        
+
       }
     )
   }

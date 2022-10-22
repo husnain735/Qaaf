@@ -368,3 +368,58 @@ button:focus {
     width: 25%;
   }
 }
+.fadeInAnimation:hover {
+  animation: fadein 1s;
+  -moz-animation: fadein 1s; /* Firefox */
+  -webkit-animation: fadein 1s; /* Safari and Chrome */
+  -o-animation: fadein 1s; /* Opera */
+}
+.fadeInAnimation2 {
+  animation: fadeOut 1s;
+  -moz-animation: fadeOut 1s; /* Firefox */
+  -webkit-animation: fadeOut 1s; /* Safari and Chrome */
+  -o-animation: fadeOut 1s; /* Opera */
+}
+@keyframes fadein {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-moz-keyframes fadein { /* Firefox */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-o-keyframes fadein { /* Opera */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes fadeOut {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+

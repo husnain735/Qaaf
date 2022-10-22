@@ -2,6 +2,7 @@ export class ItemSize {
  ItemSizeId: number;
  IsDeleted: boolean;
  ItemId: number;
- IsPrmiary: boolean;
+ IsChecked: boolean;
  TypeId: number;
+ TypeName: string;
 }

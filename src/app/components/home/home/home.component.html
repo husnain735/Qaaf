@@ -39,10 +39,10 @@
               >
                 <div class="card-header b-zero p-0">
                   <div class="p-relative pt-100">
-                    <img
-                    (mouseover)="mouseOver(itemPictures.ItemId,itemPictures.ItemPictureId)"
-                    (mouseleave)="mouseLeave(itemPictures.ItemId,itemPictures.ItemPictureId)"
-                      class="card-img"
+                    <img id={{itemPictures.ItemId}}
+                    (mouseover)="mouseOver(itemPictures.ItemId,itemPictures.ItemPictureId,1)"
+                    (mouseleave)="mouseLeave(itemPictures.ItemId,itemPictures.ItemPictureId,1)"
+                      class="card-img fadeInAnimation"
                       [src]="api_url + itemPictures.SelectedImage"
                       alt="Card image cap"
                     />
@@ -97,9 +97,11 @@
               >
                 <div class="card-header b-zero p-0">
                   <div class="p-relative pt-100">
-                    <img
-                      class="card-img"
-                      [src]="api_url + itemPictures.ImageURL"
+                    <img id={{itemPictures.ItemId}}
+                    (mouseover)="mouseOver(itemPictures.ItemId,itemPictures.ItemPictureId,2)"
+                    (mouseleave)="mouseLeave(itemPictures.ItemId,itemPictures.ItemPictureId,2)"
+                      class="card-img fadeInAnimation"
+                      [src]="api_url + itemPictures.SelectedImage"
                       alt="Card image cap"
                     />
                   </div>
@@ -122,11 +124,11 @@
               </div>
               <span *ngIf="item.SalePercentage != undefined" class="salePercentage">{{item.SalePercentage}}%&nbsp;off</span>
             </div>
-            
+
           </ng-container>
         </ng-container>
       </div>
-     
+
     </div>
   </div>
 
@@ -154,15 +156,17 @@
                 [routerLink]="['/view-item']"
                 [queryParams]="{ queryParam: item.ItemId }"
               >
-                <div class="card-header b-zero p-0">
-                  <div class="p-relative pt-100">
-                    <img
-                      class="card-img"
-                      [src]="api_url + itemPictures.ImageURL"
-                      alt="Card image cap"
-                    />
-                  </div>
+              <div id={{itemPictures.ItemId}} class="card-header b-zero p-0"
+              (mouseover)="mouseOver(itemPictures.ItemId,itemPictures.ItemPictureId,3)"
+              (mouseleave)="mouseLeave(itemPictures.ItemId,itemPictures.ItemPictureId,3)">
+                <div class="p-relative pt-100">
+                  <img
+                    class="card-img fadeInAnimation"
+                    [src]="api_url + itemPictures.SelectedImage"
+                    alt="Card image cap"
+                  />
                 </div>
+              </div>
                 <div class="card-body">
                   <h5 class="card-title font-15">{{ item.Title }}</h5>
                   <p class="card-text font-16 secondary-color font-w-bold">

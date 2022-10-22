@@ -4,9 +4,15 @@
          <ng-container *ngFor="let itemPictures of ItemModel.ItemPictures | filter : item.ItemId : 'ItemId' | filter : 1 : 'IsPrimary'">
           <div class="col-lg-3-custom col-md-4 col-sm-12 col-12 mb-4 px-4">
             <div class="card b-shadow c-border cursor" [routerLink]="['/view-item']" [queryParams]="{queryParam: item.ItemId}">
-              <div class="card-header b-zero p-0">
+              <div id={{itemPictures.ItemId}} class="card-header b-zero p-0"
+              (mouseover)="mouseOver(itemPictures.ItemId,itemPictures.ItemPictureId)"
+              (mouseleave)="mouseLeave(itemPictures.ItemId,itemPictures.ItemPictureId)">
                 <div class="p-relative pt-100">
-                  <img class="card-img" [src]="api_url + itemPictures.ImageURL" alt="Card image cap">
+                  <img
+                    class="card-img fadeInAnimation"
+                    [src]="api_url + itemPictures.SelectedImage"
+                    alt="Card image cap"
+                  />
                 </div>
               </div>
               <div class="card-body">
@@ -16,7 +22,7 @@
               </div>
             </div>
           </div>
-        </ng-container> 
-      </ng-container>  
+        </ng-container>
+      </ng-container>
     </div>
   </div>

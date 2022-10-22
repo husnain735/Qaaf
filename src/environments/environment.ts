@@ -6,6 +6,7 @@ export const environment = {
    API_URL: 'https://localhost:44321/',
    //API_URL: 'https://api.qaafcollection.com/',
    //API_URL: 'http://localqaafapi/',
+  //  API_URL: 'https://api.qaafcollection.com/',
   adminCode: '192.168.10.1',
   production: false
 };

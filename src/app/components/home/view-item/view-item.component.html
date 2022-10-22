@@ -1,4 +1,4 @@
-<div class="container mt-5 pt-5">
+<div class="container mt-5 pt-5 height">
   <div class="row mx-0 mb-5">
     <div class="col-lg-6 col-md-6 col-sm-12">
       <div class="row mx-0">
@@ -9,7 +9,7 @@
           <div class="row mx-0">
             <div class="col-2 px-0" style="overflow-y: auto; height: 520px;">
               <div
-      
+
                 class="side-image-container" width="32" height="32"
                 *ngFor="let itemPictures of ItemModel.ItemPictures"
               >
@@ -35,13 +35,30 @@
               />
             </div>
           </div>
-
-          <!-- (mousemove)="zoomIn($event)" 
+          <!-- (mousemove)="zoomIn($event)"
                     (mouseout)="zoomOut()" -->
           <!-- <div id="overlay"></div> -->
         </div>
       </div>
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12"></div>
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <p>{{ItemModel.Item.Title}}</p>
+      <p class="card-text font-16 secondary-color font-w-bold">
+        Rs.{{
+          ItemModel.Item.DiscountedPrice != undefined
+            ? ItemModel.Item.DiscountedPrice
+            : ItemModel.Item.Price
+        }}
+        <span
+          *ngIf="ItemModel.Item.DiscountedPrice != undefined"
+          class="line-through gray"
+          >Rs.{{ ItemModel.Item.Price }}</span
+        >
+      </p>
+    </div>
+    <div class="col-12">
+        <img [src]="api_url + ItemModel.Item.DescriptionChartImage" alt="" srcset="">
+    </div>
   </div>
+
 </div>

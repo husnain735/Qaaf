@@ -23,9 +23,5 @@ export class Item {
   AddressLink: string;
   ItemPicture: Array<ItemPicture>;
   SalePercentage: number;
-  IsExtraLarge: boolean;
-  IsMedium: boolean;
-  IsLarge: boolean;
-  IsSmall: boolean;
   DescriptionChartImage: string;
 }

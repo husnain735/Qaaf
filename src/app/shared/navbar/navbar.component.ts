@@ -9,9 +9,9 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class NavbarComponent implements OnInit {
   tab: any = 'tab1';
-  
+
   constructor(public _sharedService: SharedService,public _router: Router) { }
-  
+
   ngOnInit(): void {
   }
   onClick(check){
@@ -36,6 +36,15 @@ export class NavbarComponent implements OnInit {
         this._router.navigate(['/admin/']);
       }else {
         this._router.navigate(['/auth/admin-sign-in']);
+      }
+    }
+    goToPage(id){
+      if (id == 1) {
+        window.open('https://www.facebook.com/qaafcollection',"_blank")
+      }else if (id == 2) {
+        window.open('https://www.instagram.com/invites/contact/?i=1ncprbjdgxpug&utm_content=p3pznef',"_blank")
+      }else if (id == 3) {
+        window.open('https://youtube.com/channel/UCZsFd1b3wYvqG5WEbf7qqMA',"_blank")
       }
     }
 }
